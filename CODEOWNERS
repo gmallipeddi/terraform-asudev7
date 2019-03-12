@@ -1,0 +1,4 @@
+*                            @ASU/devops-infrastructure
+CODEOWNERS                   @nwilken @bootswithdefer
+Jenkinsfile                  @nwilken @ASU/devops-infrastructure
+/terraform/                  @ASU/devops-infrastructure
