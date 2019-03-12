@@ -1,0 +1,75 @@
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+ 
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.lock
+*.swp
+
+# Ansible specific files #
+##########################
+*.pyc
+ansible*.cfg
+.ansible*.cfg
+rhn.ini
+ini/ec2*.ini
+xen.ini
+sensu.ini
+foreman.ini
+observium.ini
+jenkins.ini
+*.retry
+
+warapp-vars
+
+# Galaxy Roles #
+################
+ansible/roles/ansible_*_role/
+
+# Molecule
+.molecule/
+.cache
+.molecule
+.tox
+.vagrant
+molecule/*/.molecule
+tests/__pycache__
+
+# Python virtual envs
+env/*
+# Terraform Files #
+###################
+keys.tf
+*.backup
+*.key
+.terraform/
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.lock
+*.swp
+
+# Terraform Files #
+###################
+keys.tf
+*.backup
+*.key
+.terraform/
+*.tfstate
