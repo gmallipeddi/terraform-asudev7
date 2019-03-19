@@ -1,10 +1,9 @@
-#admin_role_arn = "arn:aws:iam::640664498685:role/Jenkins"
-admin_role_arn = "arn:aws:iam::640664498685:role/AdministratorAccessCLI"
+admin_role_arn = "arn:aws:iam::640664498685:role/Jenkins"
 
 tags = {
   ProductCategory   = "??"
   ProductFamily     = "??"
-  Product           = "Data Warehouse"
+  Product           = "Legacy Data Warehouse"
   Lifecycle         = "non-prod"
   TechContact       = "??"
   AdminContact      = "??"
@@ -15,13 +14,11 @@ tags = {
 
 vpc_name = "BINONPROD-us-west-2"
 
-log_prefix = "rds/data-warehouse"
-
-vault_role_ttl = "315360000"
+log_prefix = "rds/legacy-data-warehouse"
 
 region = "us-west-2"
 
-identifier = "data-warehouse-oracle"
+identifier = "legacy-data-warehouse-oracle"
 
 allocated_storage = 6000
 
@@ -56,5 +53,3 @@ maintenance_window = "Fri:12:00-Fri:12:30"
 copy_tags_to_snapshot = true
 
 skip_final_snapshot = true
-
-product_name = "oracle-data-warehouse"

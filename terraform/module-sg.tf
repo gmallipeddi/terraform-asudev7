@@ -1,8 +1,8 @@
 module "rds-sg" {
   source = "git::ssh://git@github.com/ASU/dco-terraform.git//modules/security-group"
 
-  name        = "rds-oracle-data-warehouse"
-  description = "RDS Oracle data warehouse"
+  name        = "legacy-data-warehouse-oracle"
+  description = "RDS legacy data warehouse - Oracle"
 
   vpc_name = "${var.vpc_name}"
 

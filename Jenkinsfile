@@ -47,7 +47,7 @@ pipeline {
         }
       }
       parallel {
-        stage('Apply Control-M NP') {
+        stage('Apply') {
           agent {
             docker {
               reuseNode true

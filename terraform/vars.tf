@@ -1,9 +1,4 @@
 variable "vpc_name" {}
-
-variable "ssh_user" {
-  default = "ec2-user"
-}
-
 variable "allocated_storage" {}
 variable "storage_type" {}
 variable "engine" {}
@@ -22,6 +17,4 @@ variable "auto_minor_version_upgrade" {}
 variable "maintenance_window" {}
 variable "copy_tags_to_snapshot" {}
 variable "skip_final_snapshot" {}
-
 variable "log_prefix" {}
-variable "product_name" {}
