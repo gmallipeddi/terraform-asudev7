@@ -1,0 +1,6 @@
+# Terraform Files #
+###################
+keys.tf
+*.backup
+*.key
+.terraform/
