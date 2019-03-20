@@ -1,4 +1,5 @@
-admin_role_arn = "arn:aws:iam::640664498685:role/Jenkins"
+#admin_role_arn = "arn:aws:iam::640664498685:role/Jenkins"
+admin_role_arn = "arn:aws:iam::640664498685:role/AdministratorAccessCLI"
 
 tags = {
   ProductCategory   = "Business Intelligence"
@@ -18,38 +19,38 @@ log_prefix = "rds/legacy-data-warehouse"
 
 region = "us-west-2"
 
-identifier = "legacy-data-warehouse-oracle"
+pm_storage_type = "gp2"
 
-allocated_storage = 6000
+pm_engine = "oracle-se2"
 
-storage_type = "gp2"
+pm_storage_encrypted = true
 
-engine = "oracle-se2"
+pm_copy_tags_to_snapshot = true
 
-engine_version = "12.2.0.1.ru-2019-01.rur-2019-01.r1"
+pm_identifier = "legacy-data-warehouse-oracle"
 
-instance_class = "db.m5.4xlarge"
+pm_allocated_storage = 6000
 
-name = "ASUPMCLD"
+pm_engine_version = "12.2.0.1.ru-2019-01.rur-2019-01.r1"
 
-username = "rdsadm"
+pm_instance_class = "db.m5.4xlarge"
 
-license_model = "license-included"
+pm_name = "ASUPMCLD"
 
-character_set_name = "WE8ISO8859P15"
+pm_username = "rdsadm"
 
-option_group_name = "default.oracle-se2-12-2"
+pm_license_model = "license-included"
 
-deletion_protection = false
+pm_character_set_name = "WE8ISO8859P15"
 
-auto_minor_version_upgrade = false
+pm_option_group_name = "default.oracle-se2-12-2"
 
-backup_retention_period = 0
+pm_deletion_protection = false
 
-storage_encrypted = true
+pm_auto_minor_version_upgrade = false
 
-maintenance_window = "Fri:12:00-Fri:12:30"
+pm_backup_retention_period = 0
 
-copy_tags_to_snapshot = true
+pm_maintenance_window = "Fri:12:00-Fri:12:30"
 
-skip_final_snapshot = true
+pm_skip_final_snapshot = true
