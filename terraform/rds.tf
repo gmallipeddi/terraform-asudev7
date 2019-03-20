@@ -20,7 +20,7 @@ resource "aws_db_instance" "default" {
   storage_encrypted          = "${var.storage_encrypted}"
   maintenance_window         = "${var.maintenance_window}"
   copy_tags_to_snapshot      = "${var.copy_tags_to_snapshot}"
-  tags = "${merge(var.tags, map("Name", "${var.identifier}"))}"
+  tags                       = "${merge(var.tags, map("Name", "${var.identifier}"))}"
 }
 
 resource "aws_db_subnet_group" "subnet_group" {

@@ -34,7 +34,7 @@ pipeline {
       }
       steps {
         script {
-          statusCode = terraformPlan()
+          statusCode = terraformPlan('terraform', 'asu-uto-bi-np')
         }
       }
     }
@@ -63,7 +63,7 @@ pipeline {
             ok "Yes, we should."
           }
           steps {
-            terraformApply()
+            terraformApply('terraform', 'asu-uto-bi-np')
           }
         }
       }
