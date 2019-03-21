@@ -1,1 +1,0 @@
-edw-oracle-data-warehouse
