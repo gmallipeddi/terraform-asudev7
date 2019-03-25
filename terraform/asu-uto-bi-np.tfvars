@@ -42,7 +42,7 @@ pm_license_model = "license-included"
 
 pm_character_set_name = "WE8ISO8859P15"
 
-pm_option_group_name = "default.oracle-se2-12-2"
+pm_option_group_name = ""
 
 pm_deletion_protection = false
 
