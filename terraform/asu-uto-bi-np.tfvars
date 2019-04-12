@@ -14,7 +14,7 @@ tags = {
 
 vpc_name = "BINONPROD-us-west-2"
 
-log_prefix = "rds/legacy-data-warehouse"
+log_prefix = "rds/asupmcld"
 
 region = "us-west-2"
 
@@ -26,7 +26,7 @@ pm_storage_encrypted = true
 
 pm_copy_tags_to_snapshot = true
 
-pm_identifier = "legacy-data-warehouse-oracle"
+pm_identifier = "asupmcld"
 
 pm_allocated_storage = 6000
 
