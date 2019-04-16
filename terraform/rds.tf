@@ -14,7 +14,7 @@ resource "aws_db_instance" "pm_ldw_oracle" {
   db_subnet_group_name       = "${aws_db_subnet_group.pm_subnet_group.id}"
   backup_retention_period    = "${var.pm_backup_retention_period}"
   skip_final_snapshot        = "${var.pm_skip_final_snapshot}"
-  option_group_name          = "${var.pm_option_group_name}"
+  option_group_name          = "${aws_db_option_group.pm_ldw_oracle.name}"
   deletion_protection        = "${var.pm_deletion_protection}"
   auto_minor_version_upgrade = "${var.pm_auto_minor_version_upgrade}"
   storage_encrypted          = "${var.pm_storage_encrypted}"
@@ -33,4 +33,36 @@ resource "aws_db_subnet_group" "pm_subnet_group" {
 resource "random_string" "pm_master_password" {
   length  = 16
   special = "false"
+}
+
+resource "aws_db_option_group" "pm_ldw_oracle" {
+  name                     = "${var.pm_identifier}-${var.pm_engine}-${var.og_major_engine_version}"
+  option_group_description = "${var.pm_identifier} PL LDW Oracle"
+  engine_name              = "${var.pm_engine}"
+  major_engine_version     = "${var.pm_major_engine_version}"
+  tags                     = "${merge(var.tags, map("Name", "${var.pm_identifier}-${var.pm_engine}-${var.og_major_engine_version}"))}"
+
+  option {
+    option_name = "NATIVE_NETWORK_ENCRYPTION"
+
+    option_settings {
+      name  = "SQLNET.ENCRYPTION_SERVER"
+      value = "REQUIRED"
+    }
+
+    option_settings {
+      name  = "SQLNET.CRYPTO_CHECKSUM_SERVER"
+      value = "REQUIRED"
+    }
+
+    option_settings {
+      name  = "SQLNET.ENCRYPTION_TYPES_SERVER"
+      value = "AES256"
+    }
+
+    option_settings {
+      name  = "SQLNET.CRYPTO_CHECKSUM_TYPES_SERVER"
+      value = "SHA1"
+    }
+  }
 }

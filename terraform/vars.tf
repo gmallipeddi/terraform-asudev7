@@ -16,6 +16,8 @@ variable "pm_character_set_name" {}
 variable "pm_backup_retention_period" {}
 variable "pm_deletion_protection" {}
 variable "pm_option_group_name" {}
+variable "pm_major_engine_version" {}
 variable "pm_auto_minor_version_upgrade" {}
 variable "pm_maintenance_window" {}
 variable "pm_skip_final_snapshot" {}
+variable "og_major_engine_version" {}
