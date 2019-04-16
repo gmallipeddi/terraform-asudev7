@@ -18,12 +18,12 @@ resource "aws_security_group_rule" "oracle-in" {
   protocol          = "tcp"
 
   cidr_blocks = [
-    "129.219.229.128/25",
-    "172.31.16.0/20",
-    "172.31.32.0/20",
-    "172.25.48.65/32",
-    "172.25.48.67/32",
-    "172.25.48.69/32",
-    "172.25.48.71/32",
+    "129.219.229.128/25", # Linux VDIs
+    "172.31.16.0/20",     # Prod SSLVPN
+    "172.31.32.0/20",     # Prod SSLVPN
+    "172.25.48.65/32",    # asudbdlx01a.mycmsc.com Sierra Cedar RAC node
+    "172.25.48.67/32",    # asudbdlx01b.mycmsc.com Sierra Cedar RAC node
+    "172.25.48.69/32",    # asudbdlx01c.mycmsc.com Sierra Cedar RAC node
+    "172.25.48.71/32",    # asudbdlx01d.mycmsc.com Sierra Cedar RAC ndoe
   ] # oracle-in
 }
