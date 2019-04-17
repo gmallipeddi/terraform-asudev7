@@ -20,4 +20,3 @@ variable "pm_major_engine_version" {}
 variable "pm_auto_minor_version_upgrade" {}
 variable "pm_maintenance_window" {}
 variable "pm_skip_final_snapshot" {}
-variable "og_major_engine_version" {}

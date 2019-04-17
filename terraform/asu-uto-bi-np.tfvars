@@ -48,8 +48,6 @@ pm_deletion_protection = false
 
 pm_major_engine_version = "12.2"
 
-og_major_engine_version = "12-2"
-
 pm_auto_minor_version_upgrade = false
 
 pm_backup_retention_period = 0

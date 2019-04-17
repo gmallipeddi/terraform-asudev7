@@ -36,11 +36,11 @@ resource "random_string" "pm_master_password" {
 }
 
 resource "aws_db_option_group" "pm_ldw_oracle" {
-  name                     = "${var.pm_identifier}-${var.pm_engine}-${var.og_major_engine_version}"
+  name                     = "${var.pm_identifier}-${var.pm_engine}-${replace(var.pm_major_engine_version, ".", "-")}"
   option_group_description = "${var.pm_identifier} PL LDW Oracle"
   engine_name              = "${var.pm_engine}"
   major_engine_version     = "${var.pm_major_engine_version}"
-  tags                     = "${merge(var.tags, map("Name", "${var.pm_identifier}-${var.pm_engine}-${var.og_major_engine_version}"))}"
+  tags                     = "${merge(var.tags, map("Name", "${var.pm_identifier}-${var.pm_engine}-${replace(var.pm_major_engine_version, ".", "-")}"))}"
 
   option {
     option_name = "NATIVE_NETWORK_ENCRYPTION"
