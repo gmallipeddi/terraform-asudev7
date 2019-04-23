@@ -1,5 +1,5 @@
 resource "aws_iam_role" "rds_dba_role" {
-  name        = "RDSDBARole"
+  name        = "RDSReadOnlyWithSnapshots"
   description = "AssumeRole for DBAs RDS access"
 
   assume_role_policy = <<EOF
