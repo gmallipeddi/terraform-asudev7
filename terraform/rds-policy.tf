@@ -1,7 +1,3 @@
-#
-#  LDW-6 AC: AWS IAM role access granted (read-only to RDS with snapshot capabilities).
-#
-
 resource "aws_iam_role" "rds_dba_role" {
   name        = "RDSDBARole"
   description = "AssumeRole for DBAs RDS access"
@@ -61,4 +57,3 @@ resource "aws_iam_role_policy_attachment" "rds_dba_policy_attach" {
   role       = "${aws_iam_role.rds_dba_role.name}"
   policy_arn = "arn:aws:iam::aws:policy/AmazonRDSReadOnlyAccess"
 }
-
