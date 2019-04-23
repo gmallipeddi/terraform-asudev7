@@ -3,7 +3,7 @@
 #
 
 resource "aws_iam_role" "rds_dba_role" {
-  name        = "RdsDbaRole"
+  name        = "RDSDBARole"
   description = "AssumeRole for DBAs RDS access"
 
   assume_role_policy = <<EOF
@@ -13,9 +13,14 @@ resource "aws_iam_role" "rds_dba_role" {
     {
       "Effect": "Allow",
       "Principal": {
-        "Placeholder": "Do not know what to put here"
+        "Federated": "arn:aws:iam::640664498685:saml-provider/shibboleth2"
       },
-      "Action": "sts:AssumeRole"
+      "Action": "sts:AssumeRoleWithSAML",
+      "Condition": {
+        "StringEquals": {
+          "SAML:aud": "https://signin.aws.amazon.com/saml"
+        }
+      }
     }
   ]
 }
@@ -23,7 +28,7 @@ EOF
 }
 
 resource "aws_iam_policy" "allow_snapshots_role_policy" {
-  name        = "Allow_Snapshots_RolePolicy"
+  name        = "RDSAllowSnapshots"
   description = "Role policy for Allowing DBAs to manipulate snapshots"
 
   policy = <<EOF
@@ -39,8 +44,8 @@ resource "aws_iam_policy" "allow_snapshots_role_policy" {
                 "rds:DeleteDBSnapshot"
             ],
             "Resource": [
-                "arn:aws:rds:us-west-2:640664498685:db:asupmcld'
-            ],
+                "arn:aws:rds:us-west-2:640664498685:db:asupmcld"
+            ]
         }
     ]
 }
