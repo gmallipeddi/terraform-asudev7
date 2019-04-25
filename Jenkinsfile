@@ -34,7 +34,9 @@ pipeline {
       }
       steps {
         script {
-          statusCode = terraformPlan('terraform', 'asu-uto-bi-np')
+          def vault_addr = 'https://ops-vault-prod.opsprod.asu.edu'
+          def vault_token = vaultLogin(vault_addr, 'ops-vault-jenkins')
+          statusCode = terraformPlan('terraform', 'asu-uto-bi-np', "-var vault_addr=${vault_addr} -var vault_token=${vault_token}")
         }
       }
     }
@@ -63,7 +65,11 @@ pipeline {
             ok "Yes, we should."
           }
           steps {
-            terraformApply('terraform', 'asu-uto-bi-np')
+            script {
+              def vault_addr = 'https://ops-vault-prod.opsprod.asu.edu'
+              def vault_token = vaultLogin(vault_addr, 'ops-vault-jenkins')
+              terraformApply('terraform', 'asu-uto-bi-np', "-var vault_addr=${vault_addr} -var vault_token=${vault_token}")
+            }
           }
         }
       }
