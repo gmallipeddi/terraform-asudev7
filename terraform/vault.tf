@@ -17,7 +17,7 @@ variable "vault_role_ttl" {
 }
 
 resource "vault_generic_secret" "rds_oracle_master" {
-  path = "secret/database/asupmcld/asupmcld-np"
+  path = "secret/database/edw/oracle-data-warehouse/cld"
 
   data_json = <<EOT
 {
