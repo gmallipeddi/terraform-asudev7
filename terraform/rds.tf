@@ -74,5 +74,5 @@ resource "aws_db_option_group" "pm_ldw_oracle" {
 resource "aws_db_instance_role_association" "pm_ldw_oracle" {
   db_instance_identifier = "${aws_db_instance.pm_ldw_oracle.id}"
   feature_name           = "S3_INTEGRATION"
-  role_arn               = "${aws_iam_role.LDWRDSS3Integration.id}"
+  role_arn               = "${aws_iam_role.LDWRDSS3Integration.arn}"
 }
