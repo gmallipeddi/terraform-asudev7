@@ -68,6 +68,11 @@ resource "aws_db_option_group" "pm_ldw_oracle" {
 
   option {
     option_name = "S3_INTEGRATION"
+
+    option_settings {
+      name  = "version"
+      value = "1.0"
+    }
   }
 }
 
