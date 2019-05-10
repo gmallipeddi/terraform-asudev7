@@ -11,7 +11,6 @@ resource "aws_iam_policy" "dba_cli_s3_access" {
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "s3CLIAccessBucket",
             "Effect": "Allow",
             "Action": [
                 "s3:ListBucket",
@@ -22,11 +21,8 @@ resource "aws_iam_policy" "dba_cli_s3_access" {
             "Resource": [
                 "${aws_s3_bucket.import_bucket.arn}"
             ]
-        }
-    ],
-    "Statement": [
+        },
         {
-            "Sid": "s3CLIAccessObject",
             "Effect": "Allow",
             "Action": [
                 "s3:DeleteObject",
