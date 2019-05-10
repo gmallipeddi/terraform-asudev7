@@ -13,12 +13,27 @@ resource "aws_iam_policy" "dba_cli_s3_access" {
         {
             "Effect": "Allow",
             "Action": [
-                "s3:DeleteObject",
-                "s3:GetObject",
-                "s3:PutObject"
+                "s3:ListBucket",
+                "s3:GetBucketLocation",
+                "s3:ListMultipartUploadParts",
+                "s3:AbortMultipartUpload"
             ],
             "Resource": [
                 "${aws_s3_bucket.import_bucket.arn}"
+            ]
+        }
+    ],
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:DeleteObject",
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:ListBucketMultipartUploads"
+            ],
+            "Resource": [
+                "${aws_s3_bucket.import_bucket.arn}/*"
             ]
         }
     ]
