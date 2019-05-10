@@ -58,8 +58,8 @@ resource "aws_iam_role_policy_attachment" "rds_dba_policy_attach" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonRDSReadOnlyAccess"
 }
 
-resource "aws_iam_policy" "ManageAccessKeys_rbulusu" {
-  name        = "LDWDManageAccessKeys_rbulusu"
+resource "aws_iam_policy" "ldw_manage_accesskeys_rbulusu" {
+  name        = "LDWManageAccessKeys_rbulusu"
   description = "LDW Manage Access Keys access for user rbulusu"
 
   policy = <<EOF
@@ -86,5 +86,5 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "ldw_iam_policy_attach" {
   role       = "${aws_iam_role.rds_dba_role.name}"
-  policy_arn = "${aws_iam_policy.ManageAccessKeys_rbulusu.arn}"
+  policy_arn = "${aws_iam_policy.ldw_manage_accesskeys_rbulusu.arn}"
 }
