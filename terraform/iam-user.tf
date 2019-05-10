@@ -2,10 +2,6 @@ resource "aws_iam_user" "rbulusu" {
   name = "rbulusu"
 }
 
-resource "aws_iam_access_key" "rbulusu_key" {
-  user = "${aws_iam_user.rbulusu.name}"
-}
-
 resource "aws_iam_policy" "dba_cli_s3_access" {
   name        = "LDWDBAS3access"
   description = "LDW DBA S3 bucket access for Oracle import"
