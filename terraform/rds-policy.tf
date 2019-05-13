@@ -75,8 +75,8 @@ resource "aws_iam_policy" "ldw_manage_accesskeys_rbulusu" {
                 "iam:ListAccessKeys",
                 "iam:UpdateAccessKey"
             ],
-            "resources": [
-              "arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/rbulusu"
+            "Resource": [
+                "arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/rbulusu"
             ]
         }
     ]
