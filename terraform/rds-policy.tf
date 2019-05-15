@@ -73,7 +73,11 @@ resource "aws_iam_policy" "ldw_manage_accesskeys_rbulusu" {
                 "iam:DeleteAccessKey",
                 "iam:GetAccessKeyLastUsed",
                 "iam:ListAccessKeys",
-                "iam:UpdateAccessKey"
+                "iam:UpdateAccessKey",
+                "iam:GetUser",
+                "iam:GetAccountSummary",
+                "iam:ListAccountAliases",
+                "iam:ListUsers"
             ],
             "Resource": [
                 "arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/rbulusu"
