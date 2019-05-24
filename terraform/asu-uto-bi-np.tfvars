@@ -28,7 +28,7 @@ pm_copy_tags_to_snapshot = true
 
 pm_identifier = "asupmcld"
 
-pm_allocated_storage = 6000
+pm_allocated_storage = 9000
 
 pm_engine_version = "12.2.0.1.ru-2019-01.rur-2019-01.r1"
 
