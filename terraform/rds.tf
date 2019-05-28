@@ -21,6 +21,7 @@ resource "aws_db_instance" "pm_ldw_oracle" {
   maintenance_window         = "${var.pm_maintenance_window}"
   copy_tags_to_snapshot      = "${var.pm_copy_tags_to_snapshot}"
   tags                       = "${merge(var.tags, map("Name", "${var.pm_identifier}"))}"
+  apply_immediately          = "${var.pm_apply_immediately}"
 }
 
 resource "aws_db_subnet_group" "pm_subnet_group" {

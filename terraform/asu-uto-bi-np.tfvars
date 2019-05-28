@@ -18,6 +18,8 @@ log_prefix = "rds/asupmcld"
 
 region = "us-west-2"
 
+pm_apply_immediately = true
+
 pm_storage_type = "gp2"
 
 pm_engine = "oracle-se2"
