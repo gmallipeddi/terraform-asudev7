@@ -18,7 +18,7 @@ log_prefix = "rds/asupmcld"
 
 region = "us-west-2"
 
-pm_apply_immediately = true
+pm_apply_immediately = false
 
 pm_storage_type = "gp2"
 
@@ -57,3 +57,5 @@ pm_backup_retention_period = 0
 pm_maintenance_window = "Fri:12:00-Fri:12:30"
 
 pm_skip_final_snapshot = true
+
+pm_parameter_group_family = "oracle-se2-12.2"
