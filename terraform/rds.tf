@@ -22,6 +22,7 @@ resource "aws_db_instance" "pm_ldw_oracle" {
   copy_tags_to_snapshot      = "${var.pm_copy_tags_to_snapshot}"
   tags                       = "${merge(var.tags, map("Name", "${var.pm_identifier}"))}"
   apply_immediately          = "${var.pm_apply_immediately}"
+  parameter_group_name      = "${aws_db_parameter_group.pm_ldw_oracle_parameters.name}"
 }
 
 resource "aws_db_subnet_group" "pm_subnet_group" {
@@ -77,4 +78,17 @@ resource "aws_db_instance_role_association" "pm_ldw_oracle" {
   db_instance_identifier = "${aws_db_instance.pm_ldw_oracle.id}"
   feature_name           = "S3_INTEGRATION"
   role_arn               = "${aws_iam_role.LDWRDSS3Integration.arn}"
+}
+
+resource "aws_db_parameter_group" "pm_ldw_oracle_parameters" {
+  name        = "${var.pm_identifier}-${var.pm_engine}-${replace(var.pm_major_engine_version, ".", "-")}"
+  description = "RDS ${var.pm_identifier} parameters group"
+  family      = "${var.pm_parameter_group_family}"
+  tags        = "${merge(var.tags, map("Name", "${var.pm_identifier}-${var.pm_engine}-${replace(var.pm_major_engine_version, ".", "-")}"))}"
+
+  parameter {
+    name         = "max_string_size"
+    value        = "EXTENDED"
+    apply_method = "pending-reboot"
+  }
 }
