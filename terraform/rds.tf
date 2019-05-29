@@ -22,7 +22,7 @@ resource "aws_db_instance" "pm_ldw_oracle" {
   copy_tags_to_snapshot      = "${var.pm_copy_tags_to_snapshot}"
   tags                       = "${merge(var.tags, map("Name", "${var.pm_identifier}"))}"
   apply_immediately          = "${var.pm_apply_immediately}"
-  parameter_group_name      = "${aws_db_parameter_group.pm_ldw_oracle_parameters.name}"
+  parameter_group_name       = "${aws_db_parameter_group.pm_ldw_oracle_parameters.name}"
 }
 
 resource "aws_db_subnet_group" "pm_subnet_group" {
