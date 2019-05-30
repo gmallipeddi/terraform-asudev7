@@ -31,7 +31,6 @@ resource "aws_security_group_rule" "oracle-in" {
     "10.106.226.0/24",    # Linux DEV/QA Web/App Servers
     "10.106.229.0/24",    # Linux DEV/QA Web/App Servers
     "10.106.230.0/24",    # Linux DEV/QA Web Servers
-    "129.219.134.0/25",   # Linux DEV/QA Web Servers
     "129.219.29.0/24",    # Linux DEV/QA Web Servers
     "10.106.225.0/24",    # ControlM Servers
     "10.106.226.0/24",    # MuleSoft Servers
