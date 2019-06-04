@@ -40,7 +40,8 @@ resource "aws_iam_policy" "allow_snapshots_role_policy" {
                 "rds:DeleteDBSnapshot"
             ],
             "Resource": [
-                "${aws_db_instance.pm_ldw_oracle.arn}"
+                "${aws_db_instance.pm_ldw_oracle.arn}",
+                "${var.pm_snapshot_arn}"
             ]
         }
     ]
