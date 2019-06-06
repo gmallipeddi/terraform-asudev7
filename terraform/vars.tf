@@ -14,6 +14,7 @@ variable "pm_identifier" {}
 variable "pm_license_model" {}
 variable "pm_character_set_name" {}
 variable "pm_backup_retention_period" {}
+variable "pm_backup_window" {}
 variable "pm_deletion_protection" {}
 variable "pm_option_group_name" {}
 variable "pm_major_engine_version" {}
