@@ -100,4 +100,10 @@ resource "aws_db_parameter_group" "pm_ldw_oracle_parameters" {
     value        = "EXTENDED"
     apply_method = "pending-reboot"
   }
+
+  parameter {
+    name         = "audit_trail"
+    value        = "db"
+    apply_method = "pending-reboot"
+  }
 }
