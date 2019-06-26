@@ -104,7 +104,7 @@ data "aws_iam_policy_document" "allow_pi_access" {
 }
 
 resource "aws_iam_policy" "ldw_allow_pi" {
-  name        = "RDSDBAAllowPI_asupmcld"
+  name        = "RDSDBAAllowPI_${var.pm_identifier}"
   description = "RDS DBA Allow Performance Insights Access"
   policy      = "${data.aws_iam_policy_document.allow_pi_access.json}"
 }
