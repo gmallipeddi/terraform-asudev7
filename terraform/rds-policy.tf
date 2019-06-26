@@ -93,3 +93,23 @@ resource "aws_iam_role_policy_attachment" "ldw_iam_policy_attach" {
   role       = "${aws_iam_role.rds_dba_role.name}"
   policy_arn = "${aws_iam_policy.ldw_manage_accesskeys_rbulusu.arn}"
 }
+
+data "aws_iam_policy_document" "allow_pi_access" {
+  statement {
+    sid       = ""
+    effect    = "Allow"
+    resources = ["arn:aws:pi:*:${data.aws_caller_identity.current.account_id}:metrics/rds/${var.pm_identifier}"]
+    actions   = ["pi:*"]
+  }
+}
+
+resource "aws_iam_policy" "ldw_allow_pi" {
+  name        = "RDSDBAAllowPI_${var.pm_identifier}"
+  description = "RDS DBA Allow Performance Insights Access"
+  policy      = "${data.aws_iam_policy_document.allow_pi_access.json}"
+}
+
+resource "aws_iam_role_policy_attachment" "ldw_allow_pi_policy_attach" {
+  role       = "${aws_iam_role.rds_dba_role.name}"
+  policy_arn = "${aws_iam_policy.ldw_allow_pi.arn}"
+}
