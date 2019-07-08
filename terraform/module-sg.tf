@@ -49,5 +49,20 @@ resource "aws_security_group_rule" "oracle-in" {
     "10.107.105.156/32",  # uto-dba-ts.prod.ms.asu.edu
     "10.107.105.171/32",  # uto-dba-ts2.prod.ms.asu.edu
     "10.120.110.100/32",  # ssis-2.prod.ms.asu.edu
+    "129.219.23.0/24",    # biomssql.asurite.ad.asu.edu
+    "129.219.73.0/24",    # hida-lw04.hida.asu.edu
+    "129.219.84.0/24",    # Internal.biodesign.asu.edu
+    "129.219.113.0/24",   # mailadmin.asu.edu
+    "129.219.245.0/24",   # fdm-web.asurite.ad.asu.edu
+    "10.107.44.0/24",     # btswapp.asurite.ad.asu.edu
+    "10.107.47.0/24",     # new-doc-agntdev1.asu.edu
+    "10.107.49.0/24",     # healthsol-dev2.asurite.ad.asu.edu
+    "10.106.3.0/24",      # tb-dbamp-dev.asurite.ad.asu.edu
+    "10.106.10.0/24",     # chem-webtools-dev.asu.edu
+    "10.16.3.0/24",       # law-db.law.asu.edu
+    "10.119.11.0/24",     # wpcsql02.wpcarey.ad.asu.edu
+    "10.192.2.0/24",      # authdev.lib.asu.edu
+    "149.169.121.0/24",   # fultondevfw.fulton.ad.asu.edu
+    "149.169.137.0/24",   # warehouse.asufoundation.org
   ] # oracle-in
 }
