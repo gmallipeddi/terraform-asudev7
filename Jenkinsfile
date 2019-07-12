@@ -12,6 +12,122 @@ pipeline {
     cron('H H * * *') //run once per day
   }
   stages {
+    stage('Validate shared') {
+      agent {
+        docker {
+          reuseNode true
+          image 'bootswithdefer/terragrunt'
+          args '-e TF_IN_AUTOMATION=true'
+        }
+      }
+      steps {
+        terraformInit('terraform-shared')
+      }
+    }
+    stage('Plan shared') {
+      agent {
+        docker {
+          reuseNode true
+          image 'bootswithdefer/terragrunt'
+          args '-e TF_IN_AUTOMATION=true'
+        }
+      }
+      steps {
+        script {
+          statusCode = terraformPlan('terraform-shared')
+        }
+      }
+    }
+    stage('Gate for changes shared') {
+      when {
+        beforeAgent true
+        branch 'master'
+        expression {
+          statusCode == 2
+        }
+      }
+      parallel {
+        stage('Apply') {
+          agent {
+            docker {
+              reuseNode true
+              image 'bootswithdefer/terragrunt'
+              args '-e TF_IN_AUTOMATION=true'
+            }
+          }
+          options {
+            timeout(time: 60, unit: 'MINUTES')
+          }
+          input {
+            message "Should we continue?"
+            ok "Yes, we should."
+          }
+          steps {
+            script {
+              terraformApply('terraform-shared')
+            }
+          }
+        }
+      }
+    }
+    stage('Validate account') {
+      agent {
+        docker {
+          reuseNode true
+          image 'bootswithdefer/terragrunt'
+          args '-e TF_IN_AUTOMATION=true'
+        }
+      }
+      steps {
+        terraformInit('terraform-acct')
+      }
+    }
+    stage('Plan account') {
+      agent {
+        docker {
+          reuseNode true
+          image 'bootswithdefer/terragrunt'
+          args '-e TF_IN_AUTOMATION=true'
+        }
+      }
+      steps {
+        script {
+          statusCode = terraformPlan('terraform-acct', 'nonprod')
+        }
+      }
+    }
+    stage('Gate for changes account') {
+      when {
+        beforeAgent true
+        branch 'master'
+        expression {
+          statusCode == 2
+        }
+      }
+      parallel {
+        stage('Apply') {
+          agent {
+            docker {
+              reuseNode true
+              image 'bootswithdefer/terragrunt'
+              args '-e TF_IN_AUTOMATION=true'
+            }
+          }
+          options {
+            timeout(time: 60, unit: 'MINUTES')
+          }
+          input {
+            message "Should we continue?"
+            ok "Yes, we should."
+          }
+          steps {
+            script {
+              terraformApply('terraform-acct', 'nonprod')
+            }
+          }
+        }
+      }
+    }
     stage('Validate') {
       agent {
         docker {

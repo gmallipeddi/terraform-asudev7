@@ -1,5 +1,5 @@
 module "rds-sg" {
-  source = "git::ssh://git@github.com/ASU/dco-terraform.git//modules/security-group"
+  source = "git::ssh://git@github.com/ASU/dco-terraform.git//modules/security-group?ref=0.11"
 
   name        = "${var.pm_name}"
   description = "RDS ${var.pm_name} - Oracle"

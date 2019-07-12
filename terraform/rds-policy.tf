@@ -1,5 +1,5 @@
 resource "aws_iam_role" "rds_dba_role" {
-  name        = "RDSReadOnlyWithSnapshots"
+  name        = "RDSReadOnlyWithSnapshots_${var.pm_identifier}"
   description = "AssumeRole for DBAs RDS access"
 
   assume_role_policy = <<EOF
@@ -9,7 +9,7 @@ resource "aws_iam_role" "rds_dba_role" {
     {
       "Effect": "Allow",
       "Principal": {
-        "Federated": "arn:aws:iam::640664498685:saml-provider/shibboleth2"
+        "Federated": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:saml-provider/shibboleth2"
       },
       "Action": "sts:AssumeRoleWithSAML",
       "Condition": {
@@ -24,7 +24,7 @@ EOF
 }
 
 resource "aws_iam_policy" "allow_snapshots_role_policy" {
-  name        = "RDSAllowSnapshots"
+  name        = "RDSAllowSnapshots_${var.pm_identifier}"
   description = "Role policy for Allowing DBAs to manipulate snapshots"
 
   policy = <<EOF
@@ -59,40 +59,10 @@ resource "aws_iam_role_policy_attachment" "rds_dba_policy_attach" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonRDSReadOnlyAccess"
 }
 
-resource "aws_iam_policy" "ldw_manage_accesskeys_rbulusu" {
-  name        = "LDWManageAccessKeys_rbulusu"
-  description = "LDW Manage Access Keys access for user rbulusu"
-
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "iam:CreateAccessKey",
-                "iam:DeleteAccessKey",
-                "iam:GetAccessKeyLastUsed",
-                "iam:ListAccessKeys",
-                "iam:UpdateAccessKey",
-                "iam:GetUser",
-                "iam:GetAccountSummary",
-                "iam:ListAccountAliases",
-                "iam:ListUsers"
-            ],
-            "Resource": [
-                "arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/rbulusu"
-            ]
-        }
-    ]
-}
-EOF
-}
-
-resource "aws_iam_role_policy_attachment" "ldw_iam_policy_attach" {
-  role       = "${aws_iam_role.rds_dba_role.name}"
-  policy_arn = "${aws_iam_policy.ldw_manage_accesskeys_rbulusu.arn}"
-}
+#resource "aws_iam_role_policy_attachment" "ldw_iam_policy_attach" {
+#  role       = "${aws_iam_role.rds_dba_role.name}"
+#  policy_arn = "${aws_iam_policy.ldw_manage_accesskeys_rbulusu.arn}"
+#}
 
 data "aws_iam_policy_document" "allow_pi_access" {
   statement {
