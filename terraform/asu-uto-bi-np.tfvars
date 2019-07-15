@@ -63,3 +63,5 @@ pm_skip_final_snapshot = true
 pm_parameter_group_family = "oracle-se2-12.2"
 
 pm_snapshot_arn = "arn:aws:rds:us-west-2:640664498685:snapshot:asupmcld*"
+
+pm_vault_path = "secret/database/edw/oracle-data-warehouse/cld"

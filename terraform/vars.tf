@@ -23,6 +23,7 @@ variable "pm_maintenance_window" {}
 variable "pm_skip_final_snapshot" {}
 variable "pm_parameter_group_family" {}
 variable "pm_snapshot_arn" {}
+variable "pm_vault_path" {}
 
 variable "pm_apply_immediately" {
   default = false
