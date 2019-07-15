@@ -73,7 +73,7 @@ resource "aws_db_option_group" "pm_ldw_oracle" {
 
     option_settings {
       name  = "SQLNET.CRYPTO_CHECKSUM_TYPES_SERVER"
-      value = "SHA1"
+      value = "SHA256"
     }
   }
 
