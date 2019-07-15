@@ -81,6 +81,15 @@ resource "aws_db_option_group" "pm_ldw_oracle" {
     option_name = "S3_INTEGRATION"
     version     = "1.0"
   }
+
+  option {
+    option_name = "Timezone"
+
+    option_settings {
+      name  = "TIME_ZONE"
+      value = "America/Phoenix"
+    }
+  }
 }
 
 resource "aws_db_instance_role_association" "pm_ldw_oracle" {
