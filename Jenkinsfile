@@ -16,7 +16,7 @@ pipeline {
       agent {
         docker {
           reuseNode true
-          image 'bootswithdefer/terragrunt'
+          image 'bootswithdefer/terragrunt:0.11'
           args '-e TF_IN_AUTOMATION=true'
         }
       }
@@ -28,7 +28,7 @@ pipeline {
       agent {
         docker {
           reuseNode true
-          image 'bootswithdefer/terragrunt'
+          image 'bootswithdefer/terragrunt:0.11'
           args '-e TF_IN_AUTOMATION=true'
         }
       }
@@ -51,7 +51,7 @@ pipeline {
           agent {
             docker {
               reuseNode true
-              image 'bootswithdefer/terragrunt'
+              image 'bootswithdefer/terragrunt:0.11'
               args '-e TF_IN_AUTOMATION=true'
             }
           }
@@ -74,7 +74,7 @@ pipeline {
       agent {
         docker {
           reuseNode true
-          image 'bootswithdefer/terragrunt'
+          image 'bootswithdefer/terragrunt:0.11'
           args '-e TF_IN_AUTOMATION=true'
         }
       }
@@ -86,7 +86,7 @@ pipeline {
       agent {
         docker {
           reuseNode true
-          image 'bootswithdefer/terragrunt'
+          image 'bootswithdefer/terragrunt:0.11'
           args '-e TF_IN_AUTOMATION=true'
         }
       }
@@ -109,7 +109,7 @@ pipeline {
           agent {
             docker {
               reuseNode true
-              image 'bootswithdefer/terragrunt'
+              image 'bootswithdefer/terragrunt:0.11'
               args '-e TF_IN_AUTOMATION=true'
             }
           }
@@ -132,7 +132,7 @@ pipeline {
       agent {
         docker {
           reuseNode true
-          image 'bootswithdefer/terragrunt'
+          image 'bootswithdefer/terragrunt:0.11'
           args '-e TF_IN_AUTOMATION=true'
         }
       }
@@ -144,7 +144,7 @@ pipeline {
       agent {
         docker {
           reuseNode true
-          image 'bootswithdefer/terragrunt'
+          image 'bootswithdefer/terragrunt:0.11'
           args '-e TF_IN_AUTOMATION=true'
         }
       }
@@ -169,7 +169,7 @@ pipeline {
           agent {
             docker {
               reuseNode true
-              image 'bootswithdefer/terragrunt'
+              image 'bootswithdefer/terragrunt:0.11'
               args '-e TF_IN_AUTOMATION=true'
             }
           }
