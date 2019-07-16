@@ -1,5 +1,5 @@
 resource "aws_iam_policy" "allow_snapshots_role_policy" {
-  name        = "RDSAllowSnapshots_${var.pm_identifier}"
+  name        = "RDSAllowSnapshots"
   description = "Role policy for Allowing DBAs to manipulate snapshots"
 
   policy = <<EOF
@@ -34,6 +34,12 @@ resource "aws_iam_role_policy_attachment" "rds_dba_policy_attach" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonRDSReadOnlyAccess"
 }
 
+# this is no longer needed but kept tempararily as a memory aid.
+#resource "aws_iam_role_policy_attachment" "ldw_iam_policy_attach" {
+#  role       = "${aws_iam_role.rds_dba_role.name}"
+#  policy_arn = "${aws_iam_policy.ldw_manage_accesskeys_rbulusu.arn}"
+#}
+
 data "aws_iam_policy_document" "allow_pi_access" {
   statement {
     sid       = ""
@@ -44,7 +50,7 @@ data "aws_iam_policy_document" "allow_pi_access" {
 }
 
 resource "aws_iam_policy" "ldw_allow_pi" {
-  name        = "RDSDBAAllowPI_${var.pm_identifier}"
+  name        = "RDSDBAAllowPI"
   description = "RDS DBA Allow Performance Insights Access"
   policy      = "${data.aws_iam_policy_document.allow_pi_access.json}"
 }
