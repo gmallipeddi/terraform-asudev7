@@ -73,22 +73,13 @@ resource "aws_db_option_group" "pm_ldw_oracle" {
 
     option_settings {
       name  = "SQLNET.CRYPTO_CHECKSUM_TYPES_SERVER"
-      value = "SHA256"
+      value = "SHA1"
     }
   }
 
   option {
     option_name = "S3_INTEGRATION"
     version     = "1.0"
-  }
-
-  option {
-    option_name = "Timezone"
-
-    option_settings {
-      name  = "TIME_ZONE"
-      value = "America/Phoenix"
-    }
   }
 }
 
@@ -107,6 +98,12 @@ resource "aws_db_parameter_group" "pm_ldw_oracle_parameters" {
   parameter {
     name         = "max_string_size"
     value        = "EXTENDED"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "audit_trail"
+    value        = "db"
     apply_method = "pending-reboot"
   }
 }

@@ -15,8 +15,8 @@ resource "aws_iam_policy" "LDWRDSS3Integration" {
          ],
          "Effect": "Allow",
          "Resource": [
-           "${aws_s3_bucket.import_bucket.arn}", 
-           "${aws_s3_bucket.import_bucket.arn}/*"
+           "arn:aws:s3:::oracle-data-warehouse-import", 
+           "arn:aws:s3:::oracle-data-warehouse-import/*"
          ]
        }
     ]

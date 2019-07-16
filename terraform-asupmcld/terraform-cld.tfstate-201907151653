@@ -1,0 +1,1627 @@
+{
+    "version": 3,
+    "terraform_version": "0.11.14",
+    "serial": 41,
+    "lineage": "da072558-d055-8efa-a0df-4c6a8881b6e0",
+    "modules": [
+        {
+            "path": [
+                "root"
+            ],
+            "outputs": {},
+            "resources": {
+                "aws_db_instance.pm_ldw_oracle": {
+                    "type": "aws_db_instance",
+                    "depends_on": [
+                        "aws_db_option_group.pm_ldw_oracle",
+                        "aws_db_parameter_group.pm_ldw_oracle_parameters",
+                        "aws_db_subnet_group.pm_subnet_group",
+                        "module.rds-sg",
+                        "random_string.pm_master_password"
+                    ],
+                    "primary": {
+                        "id": "asupmcld",
+                        "attributes": {
+                            "address": "asupmcld.cslew3xddqer.us-west-2.rds.amazonaws.com",
+                            "allocated_storage": "9000",
+                            "apply_immediately": "false",
+                            "arn": "arn:aws:rds:us-west-2:640664498685:db:asupmcld",
+                            "auto_minor_version_upgrade": "false",
+                            "availability_zone": "us-west-2b",
+                            "backup_retention_period": "35",
+                            "backup_window": "07:00-09:00",
+                            "ca_cert_identifier": "rds-ca-2015",
+                            "character_set_name": "WE8ISO8859P15",
+                            "copy_tags_to_snapshot": "true",
+                            "db_subnet_group_name": "asupmcld-subnet-group",
+                            "deletion_protection": "false",
+                            "domain": "",
+                            "domain_iam_role_name": "",
+                            "enabled_cloudwatch_logs_exports.#": "4",
+                            "enabled_cloudwatch_logs_exports.0": "alert",
+                            "enabled_cloudwatch_logs_exports.1": "audit",
+                            "enabled_cloudwatch_logs_exports.2": "listener",
+                            "enabled_cloudwatch_logs_exports.3": "trace",
+                            "endpoint": "asupmcld.cslew3xddqer.us-west-2.rds.amazonaws.com:1521",
+                            "engine": "oracle-se2",
+                            "engine_version": "12.2.0.1.ru-2019-01.rur-2019-01.r1",
+                            "hosted_zone_id": "Z1PVIF0B656C1W",
+                            "iam_database_authentication_enabled": "false",
+                            "id": "asupmcld",
+                            "identifier": "asupmcld",
+                            "instance_class": "db.m5.4xlarge",
+                            "iops": "0",
+                            "kms_key_id": "arn:aws:kms:us-west-2:640664498685:key/3a08f509-9b96-4aac-8379-c423989b3b71",
+                            "license_model": "license-included",
+                            "maintenance_window": "fri:12:00-fri:12:30",
+                            "max_allocated_storage": "0",
+                            "monitoring_interval": "0",
+                            "multi_az": "false",
+                            "name": "ASUPMCLD",
+                            "option_group_name": "asupmcld-oracle-se2-12-2",
+                            "parameter_group_name": "asupmcld-oracle-se2-12-2",
+                            "password": "vA52atYmuP8W29vn",
+                            "performance_insights_enabled": "true",
+                            "performance_insights_kms_key_id": "arn:aws:kms:us-west-2:640664498685:key/3a08f509-9b96-4aac-8379-c423989b3b71",
+                            "performance_insights_retention_period": "0",
+                            "port": "1521",
+                            "publicly_accessible": "false",
+                            "replicas.#": "0",
+                            "replicate_source_db": "",
+                            "resource_id": "db-7YDS2HLVEA3UALAMYAEO75WRVU",
+                            "security_group_names.#": "0",
+                            "skip_final_snapshot": "true",
+                            "status": "available",
+                            "storage_encrypted": "true",
+                            "storage_type": "gp2",
+                            "tags.%": "10",
+                            "tags.AdminContact": "khssb",
+                            "tags.BillingCostCenter": "CC0815",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "asupmcld",
+                            "tags.Product": "Legacy Data Warehouse",
+                            "tags.ProductCategory": "Business Intelligence",
+                            "tags.ProductFamily": "Enterprise Data Warehouse",
+                            "tags.Repo": "https://github.com/ASU/edw-oracle-data-warehouse",
+                            "tags.TechContact": "tford6",
+                            "timezone": "",
+                            "username": "rdsadm",
+                            "vpc_security_group_ids.#": "1",
+                            "vpc_security_group_ids.2831115424": "sg-033536d4d13419414"
+                        },
+                        "meta": {
+                            "e2bfb730-ecaa-11e6-8f88-34363bc7c4c0": {
+                                "create": 2400000000000,
+                                "delete": 2400000000000,
+                                "update": 4800000000000
+                            }
+                        },
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_db_instance_role_association.pm_ldw_oracle": {
+                    "type": "aws_db_instance_role_association",
+                    "depends_on": [
+                        "aws_db_instance.pm_ldw_oracle",
+                        "aws_iam_role.LDWRDSS3Integration"
+                    ],
+                    "primary": {
+                        "id": "asupmcld,arn:aws:iam::640664498685:role/LDWRDSS3Integration",
+                        "attributes": {
+                            "db_instance_identifier": "asupmcld",
+                            "feature_name": "S3_INTEGRATION",
+                            "id": "asupmcld,arn:aws:iam::640664498685:role/LDWRDSS3Integration",
+                            "role_arn": "arn:aws:iam::640664498685:role/LDWRDSS3Integration"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_db_option_group.pm_ldw_oracle": {
+                    "type": "aws_db_option_group",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "asupmcld-oracle-se2-12-2",
+                        "attributes": {
+                            "arn": "arn:aws:rds:us-west-2:640664498685:og:asupmcld-oracle-se2-12-2",
+                            "engine_name": "oracle-se2",
+                            "id": "asupmcld-oracle-se2-12-2",
+                            "major_engine_version": "12.2",
+                            "name": "asupmcld-oracle-se2-12-2",
+                            "option.#": "2",
+                            "option.1957546810.db_security_group_memberships.#": "0",
+                            "option.1957546810.option_name": "S3_INTEGRATION",
+                            "option.1957546810.option_settings.#": "0",
+                            "option.1957546810.port": "0",
+                            "option.1957546810.version": "1.0",
+                            "option.1957546810.vpc_security_group_memberships.#": "0",
+                            "option.4256566885.db_security_group_memberships.#": "0",
+                            "option.4256566885.option_name": "NATIVE_NETWORK_ENCRYPTION",
+                            "option.4256566885.option_settings.#": "4",
+                            "option.4256566885.option_settings.1035052392.name": "SQLNET.CRYPTO_CHECKSUM_TYPES_SERVER",
+                            "option.4256566885.option_settings.1035052392.value": "SHA1",
+                            "option.4256566885.option_settings.1651203015.name": "SQLNET.ENCRYPTION_SERVER",
+                            "option.4256566885.option_settings.1651203015.value": "REQUIRED",
+                            "option.4256566885.option_settings.400830477.name": "SQLNET.CRYPTO_CHECKSUM_SERVER",
+                            "option.4256566885.option_settings.400830477.value": "REQUIRED",
+                            "option.4256566885.option_settings.4253291132.name": "SQLNET.ENCRYPTION_TYPES_SERVER",
+                            "option.4256566885.option_settings.4253291132.value": "AES256",
+                            "option.4256566885.port": "0",
+                            "option.4256566885.version": "",
+                            "option.4256566885.vpc_security_group_memberships.#": "0",
+                            "option_group_description": "asupmcld PL LDW Oracle",
+                            "tags.%": "10",
+                            "tags.AdminContact": "khssb",
+                            "tags.BillingCostCenter": "CC0815",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "asupmcld-oracle-se2-12-2",
+                            "tags.Product": "Legacy Data Warehouse",
+                            "tags.ProductCategory": "Business Intelligence",
+                            "tags.ProductFamily": "Enterprise Data Warehouse",
+                            "tags.Repo": "https://github.com/ASU/edw-oracle-data-warehouse",
+                            "tags.TechContact": "tford6"
+                        },
+                        "meta": {
+                            "e2bfb730-ecaa-11e6-8f88-34363bc7c4c0": {
+                                "delete": 900000000000
+                            }
+                        },
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_db_parameter_group.pm_ldw_oracle_parameters": {
+                    "type": "aws_db_parameter_group",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "asupmcld-oracle-se2-12-2",
+                        "attributes": {
+                            "arn": "arn:aws:rds:us-west-2:640664498685:pg:asupmcld-oracle-se2-12-2",
+                            "description": "RDS asupmcld parameters group",
+                            "family": "oracle-se2-12.2",
+                            "id": "asupmcld-oracle-se2-12-2",
+                            "name": "asupmcld-oracle-se2-12-2",
+                            "parameter.#": "2",
+                            "parameter.1715567393.apply_method": "pending-reboot",
+                            "parameter.1715567393.name": "max_string_size",
+                            "parameter.1715567393.value": "extended",
+                            "parameter.769629397.apply_method": "pending-reboot",
+                            "parameter.769629397.name": "audit_trail",
+                            "parameter.769629397.value": "db",
+                            "tags.%": "10",
+                            "tags.AdminContact": "khssb",
+                            "tags.BillingCostCenter": "CC0815",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "asupmcld-oracle-se2-12-2",
+                            "tags.Product": "Legacy Data Warehouse",
+                            "tags.ProductCategory": "Business Intelligence",
+                            "tags.ProductFamily": "Enterprise Data Warehouse",
+                            "tags.Repo": "https://github.com/ASU/edw-oracle-data-warehouse",
+                            "tags.TechContact": "tford6"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_db_subnet_group.pm_subnet_group": {
+                    "type": "aws_db_subnet_group",
+                    "depends_on": [
+                        "module.vpc"
+                    ],
+                    "primary": {
+                        "id": "asupmcld-subnet-group",
+                        "attributes": {
+                            "arn": "arn:aws:rds:us-west-2:640664498685:subgrp:asupmcld-subnet-group",
+                            "description": "asupmcld RDS Subnet Group",
+                            "id": "asupmcld-subnet-group",
+                            "name": "asupmcld-subnet-group",
+                            "subnet_ids.#": "2",
+                            "subnet_ids.1665337876": "subnet-89aa93c0",
+                            "subnet_ids.51846842": "subnet-20b75146",
+                            "tags.%": "0"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_iam_policy.allow_snapshots_role_policy": {
+                    "type": "aws_iam_policy",
+                    "depends_on": [
+                        "aws_db_instance.pm_ldw_oracle"
+                    ],
+                    "primary": {
+                        "id": "arn:aws:iam::640664498685:policy/RDSAllowSnapshots",
+                        "attributes": {
+                            "arn": "arn:aws:iam::640664498685:policy/RDSAllowSnapshots",
+                            "description": "Role policy for Allowing DBAs to manipulate snapshots",
+                            "id": "arn:aws:iam::640664498685:policy/RDSAllowSnapshots",
+                            "name": "RDSAllowSnapshots",
+                            "path": "/",
+                            "policy": "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"AllowSnapshots\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"rds:CreateDBSnapshot\",\n                \"rds:CopyDBSnapshot\",\n                \"rds:DeleteDBSnapshot\"\n            ],\n            \"Resource\": [\n                \"arn:aws:rds:us-west-2:640664498685:db:asupmcld\",\n                \"arn:aws:rds:us-west-2:640664498685:snapshot:asupmcld*\"\n            ]\n        }\n    ]\n}\n"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_iam_policy.ldw_allow_pi": {
+                    "type": "aws_iam_policy",
+                    "depends_on": [
+                        "data.aws_iam_policy_document.allow_pi_access"
+                    ],
+                    "primary": {
+                        "id": "arn:aws:iam::640664498685:policy/RDSDBAAllowPI_asupmcld",
+                        "attributes": {
+                            "arn": "arn:aws:iam::640664498685:policy/RDSDBAAllowPI_asupmcld",
+                            "description": "RDS DBA Allow Performance Insights Access",
+                            "id": "arn:aws:iam::640664498685:policy/RDSDBAAllowPI_asupmcld",
+                            "name": "RDSDBAAllowPI_asupmcld",
+                            "path": "/",
+                            "policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"pi:*\",\n      \"Resource\": \"arn:aws:pi:*:640664498685:metrics/rds/asupmcld\"\n    }\n  ]\n}"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_iam_role_policy_attachment.ldw_allow_pi_policy_attach": {
+                    "type": "aws_iam_role_policy_attachment",
+                    "depends_on": [
+                        "aws_iam_policy.ldw_allow_pi",
+                        "aws_iam_role.rds_dba_role"
+                    ],
+                    "primary": {
+                        "id": "RDSReadOnlyWithSnapshots-20190626213446608800000001",
+                        "attributes": {
+                            "id": "RDSReadOnlyWithSnapshots-20190626213446608800000001",
+                            "policy_arn": "arn:aws:iam::640664498685:policy/RDSDBAAllowPI_asupmcld",
+                            "role": "RDSReadOnlyWithSnapshots"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_iam_role_policy_attachment.ldw_iam_policy_attach": {
+                    "type": "aws_iam_role_policy_attachment",
+                    "depends_on": [
+                        "aws_iam_policy.ldw_manage_accesskeys_rbulusu",
+                        "aws_iam_role.rds_dba_role"
+                    ],
+                    "primary": {
+                        "id": "RDSReadOnlyWithSnapshots-20190513215317973500000001",
+                        "attributes": {
+                            "id": "RDSReadOnlyWithSnapshots-20190513215317973500000001",
+                            "policy_arn": "arn:aws:iam::640664498685:policy/LDWManageAccessKeys_rbulusu",
+                            "role": "RDSReadOnlyWithSnapshots"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_iam_role_policy_attachment.rds_allow_snapshots_policy_attach": {
+                    "type": "aws_iam_role_policy_attachment",
+                    "depends_on": [
+                        "aws_iam_policy.allow_snapshots_role_policy",
+                        "aws_iam_role.rds_dba_role"
+                    ],
+                    "primary": {
+                        "id": "RDSReadOnlyWithSnapshots-20190424201017936400000002",
+                        "attributes": {
+                            "id": "RDSReadOnlyWithSnapshots-20190424201017936400000002",
+                            "policy_arn": "arn:aws:iam::640664498685:policy/RDSAllowSnapshots",
+                            "role": "RDSReadOnlyWithSnapshots"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_iam_role_policy_attachment.rds_dba_policy_attach": {
+                    "type": "aws_iam_role_policy_attachment",
+                    "depends_on": [
+                        "aws_iam_role.rds_dba_role"
+                    ],
+                    "primary": {
+                        "id": "RDSReadOnlyWithSnapshots-20190424201017624100000001",
+                        "attributes": {
+                            "id": "RDSReadOnlyWithSnapshots-20190424201017624100000001",
+                            "policy_arn": "arn:aws:iam::aws:policy/AmazonRDSReadOnlyAccess",
+                            "role": "RDSReadOnlyWithSnapshots"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_security_group_rule.oracle-in": {
+                    "type": "aws_security_group_rule",
+                    "depends_on": [
+                        "module.rds-sg"
+                    ],
+                    "primary": {
+                        "id": "sgrule-15583603",
+                        "attributes": {
+                            "cidr_blocks.#": "47",
+                            "cidr_blocks.0": "129.219.229.128/25",
+                            "cidr_blocks.1": "172.31.16.0/20",
+                            "cidr_blocks.10": "10.106.226.0/24",
+                            "cidr_blocks.11": "10.106.229.0/24",
+                            "cidr_blocks.12": "10.106.230.0/24",
+                            "cidr_blocks.13": "10.106.250.0/24",
+                            "cidr_blocks.14": "129.219.29.0/24",
+                            "cidr_blocks.15": "10.106.225.0/24",
+                            "cidr_blocks.16": "10.120.128.0/23",
+                            "cidr_blocks.17": "10.120.130.0/23",
+                            "cidr_blocks.18": "10.120.160.0/21",
+                            "cidr_blocks.19": "10.120.168.0/21",
+                            "cidr_blocks.2": "172.31.32.0/20",
+                            "cidr_blocks.20": "10.120.114.0/24",
+                            "cidr_blocks.21": "10.120.115.0/24",
+                            "cidr_blocks.22": "10.220.132.203/32",
+                            "cidr_blocks.23": "172.24.46.0/24",
+                            "cidr_blocks.24": "172.25.46.0/24",
+                            "cidr_blocks.25": "129.219.103.86/32",
+                            "cidr_blocks.26": "129.219.176.25/32",
+                            "cidr_blocks.27": "10.107.105.237/32",
+                            "cidr_blocks.28": "10.107.105.156/32",
+                            "cidr_blocks.29": "10.107.105.171/32",
+                            "cidr_blocks.3": "172.25.48.65/32",
+                            "cidr_blocks.30": "10.120.110.100/32",
+                            "cidr_blocks.31": "129.219.23.0/24",
+                            "cidr_blocks.32": "129.219.73.0/24",
+                            "cidr_blocks.33": "129.219.84.0/24",
+                            "cidr_blocks.34": "129.219.113.0/24",
+                            "cidr_blocks.35": "129.219.245.0/24",
+                            "cidr_blocks.36": "10.107.44.0/24",
+                            "cidr_blocks.37": "10.107.47.0/24",
+                            "cidr_blocks.38": "10.107.49.0/24",
+                            "cidr_blocks.39": "10.106.3.0/24",
+                            "cidr_blocks.4": "172.25.48.67/32",
+                            "cidr_blocks.40": "10.106.10.0/24",
+                            "cidr_blocks.41": "129.219.31.26/32",
+                            "cidr_blocks.42": "10.16.3.0/24",
+                            "cidr_blocks.43": "10.119.11.0/24",
+                            "cidr_blocks.44": "10.192.2.0/24",
+                            "cidr_blocks.45": "149.169.121.0/24",
+                            "cidr_blocks.46": "149.169.137.0/24",
+                            "cidr_blocks.5": "172.25.48.69/32",
+                            "cidr_blocks.6": "172.25.48.71/32",
+                            "cidr_blocks.7": "129.219.7.64/26",
+                            "cidr_blocks.8": "129.219.42.64/26",
+                            "cidr_blocks.9": "129.219.134.0/24",
+                            "description": "ASUPMCLD db",
+                            "from_port": "1521",
+                            "id": "sgrule-15583603",
+                            "protocol": "tcp",
+                            "security_group_id": "sg-033536d4d13419414",
+                            "self": "false",
+                            "to_port": "1521",
+                            "type": "ingress"
+                        },
+                        "meta": {
+                            "schema_version": "2"
+                        },
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_caller_identity.current": {
+                    "type": "aws_caller_identity",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "2019-07-08 22:28:40.037217991 +0000 UTC",
+                        "attributes": {
+                            "account_id": "640664498685",
+                            "arn": "arn:aws:sts::640664498685:assumed-role/Jenkins/1562624918745874836",
+                            "id": "2019-07-08 22:28:40.037217991 +0000 UTC",
+                            "user_id": "AROAIB77R7LHN62DJRYEA:1562624918745874836"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_iam_policy_document.allow_pi_access": {
+                    "type": "aws_iam_policy_document",
+                    "depends_on": [
+                        "data.aws_caller_identity.current"
+                    ],
+                    "primary": {
+                        "id": "2940456186",
+                        "attributes": {
+                            "id": "2940456186",
+                            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"pi:*\",\n      \"Resource\": \"arn:aws:pi:*:640664498685:metrics/rds/asupmcld\"\n    }\n  ]\n}",
+                            "statement.#": "1",
+                            "statement.0.actions.#": "1",
+                            "statement.0.actions.2386749969": "pi:*",
+                            "statement.0.condition.#": "0",
+                            "statement.0.effect": "Allow",
+                            "statement.0.not_actions.#": "0",
+                            "statement.0.not_principals.#": "0",
+                            "statement.0.not_resources.#": "0",
+                            "statement.0.principals.#": "0",
+                            "statement.0.resources.#": "1",
+                            "statement.0.resources.690981648": "arn:aws:pi:*:640664498685:metrics/rds/asupmcld",
+                            "statement.0.sid": "",
+                            "version": "2012-10-17"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_region.current": {
+                    "type": "aws_region",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "us-west-2",
+                        "attributes": {
+                            "description": "US West (Oregon)",
+                            "endpoint": "ec2.us-west-2.amazonaws.com",
+                            "id": "us-west-2",
+                            "name": "us-west-2"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "random_string.pm_master_password": {
+                    "type": "random_string",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "none",
+                        "attributes": {
+                            "id": "none",
+                            "length": "16",
+                            "lower": "true",
+                            "min_lower": "0",
+                            "min_numeric": "0",
+                            "min_special": "0",
+                            "min_upper": "0",
+                            "number": "true",
+                            "result": "vA52atYmuP8W29vn",
+                            "special": "false",
+                            "upper": "true"
+                        },
+                        "meta": {
+                            "schema_version": "1"
+                        },
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.random"
+                },
+                "vault_generic_secret.rds_oracle_master": {
+                    "type": "vault_generic_secret",
+                    "depends_on": [
+                        "aws_db_instance.pm_ldw_oracle",
+                        "random_string.pm_master_password"
+                    ],
+                    "primary": {
+                        "id": "secret/database/edw/oracle-data-warehouse/cld",
+                        "attributes": {
+                            "data.%": "3",
+                            "data.endpoint": "asupmcld.cslew3xddqer.us-west-2.rds.amazonaws.com:1521",
+                            "data.password": "vA52atYmuP8W29vn",
+                            "data.username": "rdsadm",
+                            "data_json": "{\"endpoint\":\"asupmcld.cslew3xddqer.us-west-2.rds.amazonaws.com:1521\",\"password\":\"vA52atYmuP8W29vn\",\"username\":\"rdsadm\"}",
+                            "disable_read": "false",
+                            "id": "secret/database/edw/oracle-data-warehouse/cld",
+                            "path": "secret/database/edw/oracle-data-warehouse/cld"
+                        },
+                        "meta": {
+                            "schema_version": "1"
+                        },
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.vault"
+                }
+            },
+            "depends_on": []
+        },
+        {
+            "path": [
+                "root",
+                "rds-sg"
+            ],
+            "outputs": {
+                "id": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "sg-033536d4d13419414"
+                },
+                "name": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "BINONPROD-us-west-2-ASUPMCLD"
+                },
+                "shortname": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "ASUPMCLD"
+                }
+            },
+            "resources": {
+                "aws_security_group.sg": {
+                    "type": "aws_security_group",
+                    "depends_on": [
+                        "module.tags",
+                        "module.vpc"
+                    ],
+                    "primary": {
+                        "id": "sg-033536d4d13419414",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:us-west-2:640664498685:security-group/sg-033536d4d13419414",
+                            "description": "BINONPROD-us-west-2 RDS ASUPMCLD - Oracle",
+                            "egress.#": "0",
+                            "id": "sg-033536d4d13419414",
+                            "ingress.#": "2",
+                            "ingress.2371159381.cidr_blocks.#": "1",
+                            "ingress.2371159381.cidr_blocks.0": "10.106.250.0/24",
+                            "ingress.2371159381.description": "ASUPMCLD db",
+                            "ingress.2371159381.from_port": "1521",
+                            "ingress.2371159381.ipv6_cidr_blocks.#": "0",
+                            "ingress.2371159381.prefix_list_ids.#": "0",
+                            "ingress.2371159381.protocol": "tcp",
+                            "ingress.2371159381.security_groups.#": "0",
+                            "ingress.2371159381.self": "false",
+                            "ingress.2371159381.to_port": "1521",
+                            "ingress.3863802210.cidr_blocks.#": "30",
+                            "ingress.3863802210.cidr_blocks.0": "129.219.229.128/25",
+                            "ingress.3863802210.cidr_blocks.1": "172.31.16.0/20",
+                            "ingress.3863802210.cidr_blocks.10": "10.106.226.0/24",
+                            "ingress.3863802210.cidr_blocks.11": "10.106.229.0/24",
+                            "ingress.3863802210.cidr_blocks.12": "10.106.230.0/24",
+                            "ingress.3863802210.cidr_blocks.13": "129.219.29.0/24",
+                            "ingress.3863802210.cidr_blocks.14": "10.106.225.0/24",
+                            "ingress.3863802210.cidr_blocks.15": "10.120.128.0/23",
+                            "ingress.3863802210.cidr_blocks.16": "10.120.130.0/23",
+                            "ingress.3863802210.cidr_blocks.17": "10.120.160.0/21",
+                            "ingress.3863802210.cidr_blocks.18": "10.120.168.0/21",
+                            "ingress.3863802210.cidr_blocks.19": "10.120.114.0/24",
+                            "ingress.3863802210.cidr_blocks.2": "172.31.32.0/20",
+                            "ingress.3863802210.cidr_blocks.20": "10.120.115.0/24",
+                            "ingress.3863802210.cidr_blocks.21": "10.220.132.203/32",
+                            "ingress.3863802210.cidr_blocks.22": "172.24.46.0/24",
+                            "ingress.3863802210.cidr_blocks.23": "172.25.46.0/24",
+                            "ingress.3863802210.cidr_blocks.24": "129.219.103.86/32",
+                            "ingress.3863802210.cidr_blocks.25": "129.219.176.25/32",
+                            "ingress.3863802210.cidr_blocks.26": "10.107.105.237/32",
+                            "ingress.3863802210.cidr_blocks.27": "10.107.105.156/32",
+                            "ingress.3863802210.cidr_blocks.28": "10.107.105.171/32",
+                            "ingress.3863802210.cidr_blocks.29": "10.120.110.100/32",
+                            "ingress.3863802210.cidr_blocks.3": "172.25.48.65/32",
+                            "ingress.3863802210.cidr_blocks.4": "172.25.48.67/32",
+                            "ingress.3863802210.cidr_blocks.5": "172.25.48.69/32",
+                            "ingress.3863802210.cidr_blocks.6": "172.25.48.71/32",
+                            "ingress.3863802210.cidr_blocks.7": "129.219.7.64/26",
+                            "ingress.3863802210.cidr_blocks.8": "129.219.42.64/26",
+                            "ingress.3863802210.cidr_blocks.9": "129.219.134.0/24",
+                            "ingress.3863802210.description": "ASUPMCLD db",
+                            "ingress.3863802210.from_port": "1521",
+                            "ingress.3863802210.ipv6_cidr_blocks.#": "0",
+                            "ingress.3863802210.prefix_list_ids.#": "0",
+                            "ingress.3863802210.protocol": "tcp",
+                            "ingress.3863802210.security_groups.#": "0",
+                            "ingress.3863802210.self": "false",
+                            "ingress.3863802210.to_port": "1521",
+                            "name": "BINONPROD-us-west-2-ASUPMCLD",
+                            "owner_id": "640664498685",
+                            "revoke_rules_on_delete": "false",
+                            "tags.%": "10",
+                            "tags.AdminContact": "khssb",
+                            "tags.BillingCostCenter": "CC0815",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "BINONPROD-us-west-2-ASUPMCLD",
+                            "tags.Product": "Legacy Data Warehouse",
+                            "tags.ProductCategory": "Business Intelligence",
+                            "tags.ProductFamily": "Enterprise Data Warehouse",
+                            "tags.Repo": "https://github.com/ASU/edw-oracle-data-warehouse",
+                            "tags.TechContact": "tford6",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {
+                            "e2bfb730-ecaa-11e6-8f88-34363bc7c4c0": {
+                                "create": 600000000000,
+                                "delete": 600000000000
+                            },
+                            "schema_version": "1"
+                        },
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                }
+            },
+            "depends_on": []
+        },
+        {
+            "path": [
+                "root",
+                "tags"
+            ],
+            "outputs": {
+                "AdminContact": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "khssb"
+                },
+                "BillingCostCenter": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "CC0815"
+                },
+                "BillingProgram": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "PG06101"
+                },
+                "Lifecycle": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "non-prod"
+                },
+                "Product": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "Legacy Data Warehouse"
+                },
+                "ProductCategory": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "Business Intelligence"
+                },
+                "ProductFamily": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "Enterprise Data Warehouse"
+                },
+                "Repo": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "https://github.com/ASU/edw-oracle-data-warehouse"
+                },
+                "TechContact": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "tford6"
+                },
+                "asgtags": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        {
+                            "key": "ProductCategory",
+                            "propagate_at_launch": true,
+                            "value": "Business Intelligence"
+                        },
+                        {
+                            "key": "ProductFamily",
+                            "propagate_at_launch": true,
+                            "value": "Enterprise Data Warehouse"
+                        },
+                        {
+                            "key": "Product",
+                            "propagate_at_launch": true,
+                            "value": "Legacy Data Warehouse"
+                        },
+                        {
+                            "key": "Lifecycle",
+                            "propagate_at_launch": true,
+                            "value": "non-prod"
+                        },
+                        {
+                            "key": "TechContact",
+                            "propagate_at_launch": true,
+                            "value": "tford6"
+                        },
+                        {
+                            "key": "AdminContact",
+                            "propagate_at_launch": true,
+                            "value": "khssb"
+                        },
+                        {
+                            "key": "BillingCostCenter",
+                            "propagate_at_launch": true,
+                            "value": "CC0815"
+                        },
+                        {
+                            "key": "BillingProgram",
+                            "propagate_at_launch": true,
+                            "value": "PG06101"
+                        },
+                        {
+                            "key": "Repo",
+                            "propagate_at_launch": true,
+                            "value": "https://github.com/ASU/edw-oracle-data-warehouse"
+                        }
+                    ]
+                },
+                "standard9tags": {
+                    "sensitive": false,
+                    "type": "map",
+                    "value": {
+                        "AdminContact": "khssb",
+                        "BillingCostCenter": "CC0815",
+                        "BillingProgram": "PG06101",
+                        "Lifecycle": "non-prod",
+                        "Product": "Legacy Data Warehouse",
+                        "ProductCategory": "Business Intelligence",
+                        "ProductFamily": "Enterprise Data Warehouse",
+                        "Repo": "https://github.com/ASU/edw-oracle-data-warehouse",
+                        "TechContact": "tford6"
+                    }
+                },
+                "tags": {
+                    "sensitive": false,
+                    "type": "map",
+                    "value": {
+                        "AdminContact": "khssb",
+                        "BillingCostCenter": "CC0815",
+                        "BillingProgram": "PG06101",
+                        "Lifecycle": "non-prod",
+                        "Product": "Legacy Data Warehouse",
+                        "ProductCategory": "Business Intelligence",
+                        "ProductFamily": "Enterprise Data Warehouse",
+                        "Repo": "https://github.com/ASU/edw-oracle-data-warehouse",
+                        "TechContact": "tford6"
+                    }
+                }
+            },
+            "resources": {},
+            "depends_on": []
+        },
+        {
+            "path": [
+                "root",
+                "vpc"
+            ],
+            "outputs": {
+                "cidr_block": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "10.120.112.0/22"
+                },
+                "fixme_public_ids": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "subnet-bdb452db",
+                        "subnet-d1ac9598",
+                        "placeholder",
+                        "placeholder"
+                    ]
+                },
+                "id": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "vpc-af5782c9"
+                },
+                "name": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "BINONPROD-us-west-2"
+                },
+                "private_azs": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "us-west-2a",
+                        "us-west-2b"
+                    ]
+                },
+                "private_cidrs": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "10.120.114.0/24",
+                        "10.120.115.0/24"
+                    ]
+                },
+                "private_ids": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "subnet-20b75146",
+                        "subnet-89aa93c0"
+                    ]
+                },
+                "public_azs": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "us-west-2a",
+                        "us-west-2b"
+                    ]
+                },
+                "public_cidrs": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "10.120.112.0/24",
+                        "10.120.113.0/24"
+                    ]
+                },
+                "public_ids": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "subnet-bdb452db",
+                        "subnet-d1ac9598"
+                    ]
+                }
+            },
+            "resources": {
+                "data.aws_subnet.private.0": {
+                    "type": "aws_subnet",
+                    "depends_on": [
+                        "data.aws_subnet_ids.private"
+                    ],
+                    "primary": {
+                        "id": "subnet-20b75146",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:us-west-2:640664498685:subnet/subnet-20b75146",
+                            "assign_ipv6_address_on_creation": "false",
+                            "availability_zone": "us-west-2a",
+                            "availability_zone_id": "usw2-az1",
+                            "cidr_block": "10.120.114.0/24",
+                            "default_for_az": "false",
+                            "id": "subnet-20b75146",
+                            "ipv6_cidr_block": "2600:1f14:b3b:6820::/64",
+                            "ipv6_cidr_block_association_id": "subnet-cidr-assoc-05dc4dcdc22ffc339",
+                            "map_public_ip_on_launch": "false",
+                            "owner_id": "640664498685",
+                            "state": "available",
+                            "tags.%": "14",
+                            "tags.AdminContact": "kgjam",
+                            "tags.BillingCostCenter": "CC0697",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "BINONPROD-us-west-2a-Private",
+                            "tags.Product": "AWS Data Center Networks",
+                            "tags.ProductCategory": "Data Center Platforms \u0026 Services",
+                            "tags.ProductFamily": "Cloud Engineering",
+                            "tags.Repo": "https://github.com/ASU/aws-org-asu-accounts",
+                            "tags.TechContact": "kxglw",
+                            "tags.Type": "Private",
+                            "tags.kubernetes.io/cluster/caas": "shared",
+                            "tags.kubernetes.io/cluster/eks": "shared",
+                            "tags.kubernetes.io/role/internal-elb": "1",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_subnet.private.1": {
+                    "type": "aws_subnet",
+                    "depends_on": [
+                        "data.aws_subnet_ids.private"
+                    ],
+                    "primary": {
+                        "id": "subnet-89aa93c0",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:us-west-2:640664498685:subnet/subnet-89aa93c0",
+                            "assign_ipv6_address_on_creation": "false",
+                            "availability_zone": "us-west-2b",
+                            "availability_zone_id": "usw2-az2",
+                            "cidr_block": "10.120.115.0/24",
+                            "default_for_az": "false",
+                            "id": "subnet-89aa93c0",
+                            "ipv6_cidr_block": "2600:1f14:b3b:6821::/64",
+                            "ipv6_cidr_block_association_id": "subnet-cidr-assoc-0d94f3c87e03cff82",
+                            "map_public_ip_on_launch": "false",
+                            "owner_id": "640664498685",
+                            "state": "available",
+                            "tags.%": "14",
+                            "tags.AdminContact": "kgjam",
+                            "tags.BillingCostCenter": "CC0697",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "BINONPROD-us-west-2b-Private",
+                            "tags.Product": "AWS Data Center Networks",
+                            "tags.ProductCategory": "Data Center Platforms \u0026 Services",
+                            "tags.ProductFamily": "Cloud Engineering",
+                            "tags.Repo": "https://github.com/ASU/aws-org-asu-accounts",
+                            "tags.TechContact": "kxglw",
+                            "tags.Type": "Private",
+                            "tags.kubernetes.io/cluster/caas": "shared",
+                            "tags.kubernetes.io/cluster/eks": "shared",
+                            "tags.kubernetes.io/role/internal-elb": "1",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_subnet.public.0": {
+                    "type": "aws_subnet",
+                    "depends_on": [
+                        "data.aws_subnet_ids.public"
+                    ],
+                    "primary": {
+                        "id": "subnet-bdb452db",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:us-west-2:640664498685:subnet/subnet-bdb452db",
+                            "assign_ipv6_address_on_creation": "false",
+                            "availability_zone": "us-west-2a",
+                            "availability_zone_id": "usw2-az1",
+                            "cidr_block": "10.120.112.0/24",
+                            "default_for_az": "false",
+                            "id": "subnet-bdb452db",
+                            "ipv6_cidr_block": "2600:1f14:b3b:6800::/64",
+                            "ipv6_cidr_block_association_id": "subnet-cidr-assoc-0351b85c4415ea391",
+                            "map_public_ip_on_launch": "false",
+                            "owner_id": "640664498685",
+                            "state": "available",
+                            "tags.%": "14",
+                            "tags.AdminContact": "kgjam",
+                            "tags.BillingCostCenter": "CC0697",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "BINONPROD-us-west-2a-Public",
+                            "tags.Product": "AWS Data Center Networks",
+                            "tags.ProductCategory": "Data Center Platforms \u0026 Services",
+                            "tags.ProductFamily": "Cloud Engineering",
+                            "tags.Repo": "https://github.com/ASU/aws-org-asu-accounts",
+                            "tags.TechContact": "kxglw",
+                            "tags.Type": "Public",
+                            "tags.kubernetes.io/cluster/caas": "shared",
+                            "tags.kubernetes.io/cluster/eks": "shared",
+                            "tags.kubernetes.io/role/elb": "1",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_subnet.public.1": {
+                    "type": "aws_subnet",
+                    "depends_on": [
+                        "data.aws_subnet_ids.public"
+                    ],
+                    "primary": {
+                        "id": "subnet-d1ac9598",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:us-west-2:640664498685:subnet/subnet-d1ac9598",
+                            "assign_ipv6_address_on_creation": "false",
+                            "availability_zone": "us-west-2b",
+                            "availability_zone_id": "usw2-az2",
+                            "cidr_block": "10.120.113.0/24",
+                            "default_for_az": "false",
+                            "id": "subnet-d1ac9598",
+                            "ipv6_cidr_block": "2600:1f14:b3b:6801::/64",
+                            "ipv6_cidr_block_association_id": "subnet-cidr-assoc-06e2c81682dc84264",
+                            "map_public_ip_on_launch": "false",
+                            "owner_id": "640664498685",
+                            "state": "available",
+                            "tags.%": "14",
+                            "tags.AdminContact": "kgjam",
+                            "tags.BillingCostCenter": "CC0697",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "BINONPROD-us-west-2b-Public",
+                            "tags.Product": "AWS Data Center Networks",
+                            "tags.ProductCategory": "Data Center Platforms \u0026 Services",
+                            "tags.ProductFamily": "Cloud Engineering",
+                            "tags.Repo": "https://github.com/ASU/aws-org-asu-accounts",
+                            "tags.TechContact": "kxglw",
+                            "tags.Type": "Public",
+                            "tags.kubernetes.io/cluster/caas": "shared",
+                            "tags.kubernetes.io/cluster/eks": "shared",
+                            "tags.kubernetes.io/role/elb": "1",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_subnet_ids.private": {
+                    "type": "aws_subnet_ids",
+                    "depends_on": [
+                        "data.aws_vpc.selected"
+                    ],
+                    "primary": {
+                        "id": "vpc-af5782c9",
+                        "attributes": {
+                            "id": "vpc-af5782c9",
+                            "ids.#": "2",
+                            "ids.1665337876": "subnet-89aa93c0",
+                            "ids.51846842": "subnet-20b75146",
+                            "tags.%": "1",
+                            "tags.Type": "Private",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_subnet_ids.public": {
+                    "type": "aws_subnet_ids",
+                    "depends_on": [
+                        "data.aws_vpc.selected"
+                    ],
+                    "primary": {
+                        "id": "vpc-af5782c9",
+                        "attributes": {
+                            "id": "vpc-af5782c9",
+                            "ids.#": "2",
+                            "ids.1659351236": "subnet-d1ac9598",
+                            "ids.317730024": "subnet-bdb452db",
+                            "tags.%": "1",
+                            "tags.Type": "Public",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_vpc.selected": {
+                    "type": "aws_vpc",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "vpc-af5782c9",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:us-west-2:640664498685:vpc/vpc-af5782c9",
+                            "cidr_block": "10.120.112.0/22",
+                            "cidr_block_associations.#": "1",
+                            "cidr_block_associations.0.association_id": "vpc-cidr-assoc-741b941c",
+                            "cidr_block_associations.0.cidr_block": "10.120.112.0/22",
+                            "cidr_block_associations.0.state": "associated",
+                            "default": "false",
+                            "dhcp_options_id": "dopt-092bb3516c9382771",
+                            "enable_dns_hostnames": "true",
+                            "enable_dns_support": "true",
+                            "id": "vpc-af5782c9",
+                            "instance_tenancy": "default",
+                            "ipv6_association_id": "vpc-cidr-assoc-0c0362c84392116b2",
+                            "ipv6_cidr_block": "2600:1f14:b3b:6800::/56",
+                            "main_route_table_id": "rtb-749cc712",
+                            "owner_id": "640664498685",
+                            "state": "available",
+                            "tags.%": "12",
+                            "tags.AdminContact": "kgjam",
+                            "tags.BillingCostCenter": "CC0697",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "BINONPROD-us-west-2",
+                            "tags.Product": "AWS Data Center Networks",
+                            "tags.ProductCategory": "Data Center Platforms \u0026 Services",
+                            "tags.ProductFamily": "Cloud Engineering",
+                            "tags.Repo": "https://github.com/ASU/aws-org-asu-accounts",
+                            "tags.TechContact": "kxglw",
+                            "tags.kubernetes.io/cluster/caas": "shared",
+                            "tags.kubernetes.io/cluster/eks": "shared"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                }
+            },
+            "depends_on": []
+        },
+        {
+            "path": [
+                "root",
+                "rds-sg",
+                "tags"
+            ],
+            "outputs": {
+                "AdminContact": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "khssb"
+                },
+                "BillingCostCenter": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "CC0815"
+                },
+                "BillingProgram": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "PG06101"
+                },
+                "Lifecycle": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "non-prod"
+                },
+                "Product": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "Legacy Data Warehouse"
+                },
+                "ProductCategory": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "Business Intelligence"
+                },
+                "ProductFamily": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "Enterprise Data Warehouse"
+                },
+                "Repo": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "https://github.com/ASU/edw-oracle-data-warehouse"
+                },
+                "TechContact": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "tford6"
+                },
+                "asgtags": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        {
+                            "key": "ProductCategory",
+                            "propagate_at_launch": true,
+                            "value": "Business Intelligence"
+                        },
+                        {
+                            "key": "ProductFamily",
+                            "propagate_at_launch": true,
+                            "value": "Enterprise Data Warehouse"
+                        },
+                        {
+                            "key": "Product",
+                            "propagate_at_launch": true,
+                            "value": "Legacy Data Warehouse"
+                        },
+                        {
+                            "key": "Lifecycle",
+                            "propagate_at_launch": true,
+                            "value": "non-prod"
+                        },
+                        {
+                            "key": "TechContact",
+                            "propagate_at_launch": true,
+                            "value": "tford6"
+                        },
+                        {
+                            "key": "AdminContact",
+                            "propagate_at_launch": true,
+                            "value": "khssb"
+                        },
+                        {
+                            "key": "BillingCostCenter",
+                            "propagate_at_launch": true,
+                            "value": "CC0815"
+                        },
+                        {
+                            "key": "BillingProgram",
+                            "propagate_at_launch": true,
+                            "value": "PG06101"
+                        },
+                        {
+                            "key": "Repo",
+                            "propagate_at_launch": true,
+                            "value": "https://github.com/ASU/edw-oracle-data-warehouse"
+                        }
+                    ]
+                },
+                "standard9tags": {
+                    "sensitive": false,
+                    "type": "map",
+                    "value": {
+                        "AdminContact": "khssb",
+                        "BillingCostCenter": "CC0815",
+                        "BillingProgram": "PG06101",
+                        "Lifecycle": "non-prod",
+                        "Product": "Legacy Data Warehouse",
+                        "ProductCategory": "Business Intelligence",
+                        "ProductFamily": "Enterprise Data Warehouse",
+                        "Repo": "https://github.com/ASU/edw-oracle-data-warehouse",
+                        "TechContact": "tford6"
+                    }
+                },
+                "tags": {
+                    "sensitive": false,
+                    "type": "map",
+                    "value": {
+                        "AdminContact": "khssb",
+                        "BillingCostCenter": "CC0815",
+                        "BillingProgram": "PG06101",
+                        "Lifecycle": "non-prod",
+                        "Product": "Legacy Data Warehouse",
+                        "ProductCategory": "Business Intelligence",
+                        "ProductFamily": "Enterprise Data Warehouse",
+                        "Repo": "https://github.com/ASU/edw-oracle-data-warehouse",
+                        "TechContact": "tford6"
+                    }
+                }
+            },
+            "resources": {},
+            "depends_on": []
+        },
+        {
+            "path": [
+                "root",
+                "rds-sg",
+                "vpc"
+            ],
+            "outputs": {
+                "cidr_block": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "10.120.112.0/22"
+                },
+                "fixme_public_ids": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "subnet-bdb452db",
+                        "subnet-d1ac9598",
+                        "placeholder",
+                        "placeholder"
+                    ]
+                },
+                "id": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "vpc-af5782c9"
+                },
+                "name": {
+                    "sensitive": false,
+                    "type": "string",
+                    "value": "BINONPROD-us-west-2"
+                },
+                "private_azs": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "us-west-2a",
+                        "us-west-2b"
+                    ]
+                },
+                "private_cidrs": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "10.120.114.0/24",
+                        "10.120.115.0/24"
+                    ]
+                },
+                "private_ids": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "subnet-20b75146",
+                        "subnet-89aa93c0"
+                    ]
+                },
+                "public_azs": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "us-west-2a",
+                        "us-west-2b"
+                    ]
+                },
+                "public_cidrs": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "10.120.112.0/24",
+                        "10.120.113.0/24"
+                    ]
+                },
+                "public_ids": {
+                    "sensitive": false,
+                    "type": "list",
+                    "value": [
+                        "subnet-bdb452db",
+                        "subnet-d1ac9598"
+                    ]
+                }
+            },
+            "resources": {
+                "data.aws_subnet.private.0": {
+                    "type": "aws_subnet",
+                    "depends_on": [
+                        "data.aws_subnet_ids.private"
+                    ],
+                    "primary": {
+                        "id": "subnet-20b75146",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:us-west-2:640664498685:subnet/subnet-20b75146",
+                            "assign_ipv6_address_on_creation": "false",
+                            "availability_zone": "us-west-2a",
+                            "availability_zone_id": "usw2-az1",
+                            "cidr_block": "10.120.114.0/24",
+                            "default_for_az": "false",
+                            "id": "subnet-20b75146",
+                            "ipv6_cidr_block": "2600:1f14:b3b:6820::/64",
+                            "ipv6_cidr_block_association_id": "subnet-cidr-assoc-05dc4dcdc22ffc339",
+                            "map_public_ip_on_launch": "false",
+                            "owner_id": "640664498685",
+                            "state": "available",
+                            "tags.%": "14",
+                            "tags.AdminContact": "kgjam",
+                            "tags.BillingCostCenter": "CC0697",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "BINONPROD-us-west-2a-Private",
+                            "tags.Product": "AWS Data Center Networks",
+                            "tags.ProductCategory": "Data Center Platforms \u0026 Services",
+                            "tags.ProductFamily": "Cloud Engineering",
+                            "tags.Repo": "https://github.com/ASU/aws-org-asu-accounts",
+                            "tags.TechContact": "kxglw",
+                            "tags.Type": "Private",
+                            "tags.kubernetes.io/cluster/caas": "shared",
+                            "tags.kubernetes.io/cluster/eks": "shared",
+                            "tags.kubernetes.io/role/internal-elb": "1",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_subnet.private.1": {
+                    "type": "aws_subnet",
+                    "depends_on": [
+                        "data.aws_subnet_ids.private"
+                    ],
+                    "primary": {
+                        "id": "subnet-89aa93c0",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:us-west-2:640664498685:subnet/subnet-89aa93c0",
+                            "assign_ipv6_address_on_creation": "false",
+                            "availability_zone": "us-west-2b",
+                            "availability_zone_id": "usw2-az2",
+                            "cidr_block": "10.120.115.0/24",
+                            "default_for_az": "false",
+                            "id": "subnet-89aa93c0",
+                            "ipv6_cidr_block": "2600:1f14:b3b:6821::/64",
+                            "ipv6_cidr_block_association_id": "subnet-cidr-assoc-0d94f3c87e03cff82",
+                            "map_public_ip_on_launch": "false",
+                            "owner_id": "640664498685",
+                            "state": "available",
+                            "tags.%": "14",
+                            "tags.AdminContact": "kgjam",
+                            "tags.BillingCostCenter": "CC0697",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "BINONPROD-us-west-2b-Private",
+                            "tags.Product": "AWS Data Center Networks",
+                            "tags.ProductCategory": "Data Center Platforms \u0026 Services",
+                            "tags.ProductFamily": "Cloud Engineering",
+                            "tags.Repo": "https://github.com/ASU/aws-org-asu-accounts",
+                            "tags.TechContact": "kxglw",
+                            "tags.Type": "Private",
+                            "tags.kubernetes.io/cluster/caas": "shared",
+                            "tags.kubernetes.io/cluster/eks": "shared",
+                            "tags.kubernetes.io/role/internal-elb": "1",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_subnet.public.0": {
+                    "type": "aws_subnet",
+                    "depends_on": [
+                        "data.aws_subnet_ids.public"
+                    ],
+                    "primary": {
+                        "id": "subnet-bdb452db",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:us-west-2:640664498685:subnet/subnet-bdb452db",
+                            "assign_ipv6_address_on_creation": "false",
+                            "availability_zone": "us-west-2a",
+                            "availability_zone_id": "usw2-az1",
+                            "cidr_block": "10.120.112.0/24",
+                            "default_for_az": "false",
+                            "id": "subnet-bdb452db",
+                            "ipv6_cidr_block": "2600:1f14:b3b:6800::/64",
+                            "ipv6_cidr_block_association_id": "subnet-cidr-assoc-0351b85c4415ea391",
+                            "map_public_ip_on_launch": "false",
+                            "owner_id": "640664498685",
+                            "state": "available",
+                            "tags.%": "14",
+                            "tags.AdminContact": "kgjam",
+                            "tags.BillingCostCenter": "CC0697",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "BINONPROD-us-west-2a-Public",
+                            "tags.Product": "AWS Data Center Networks",
+                            "tags.ProductCategory": "Data Center Platforms \u0026 Services",
+                            "tags.ProductFamily": "Cloud Engineering",
+                            "tags.Repo": "https://github.com/ASU/aws-org-asu-accounts",
+                            "tags.TechContact": "kxglw",
+                            "tags.Type": "Public",
+                            "tags.kubernetes.io/cluster/caas": "shared",
+                            "tags.kubernetes.io/cluster/eks": "shared",
+                            "tags.kubernetes.io/role/elb": "1",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_subnet.public.1": {
+                    "type": "aws_subnet",
+                    "depends_on": [
+                        "data.aws_subnet_ids.public"
+                    ],
+                    "primary": {
+                        "id": "subnet-d1ac9598",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:us-west-2:640664498685:subnet/subnet-d1ac9598",
+                            "assign_ipv6_address_on_creation": "false",
+                            "availability_zone": "us-west-2b",
+                            "availability_zone_id": "usw2-az2",
+                            "cidr_block": "10.120.113.0/24",
+                            "default_for_az": "false",
+                            "id": "subnet-d1ac9598",
+                            "ipv6_cidr_block": "2600:1f14:b3b:6801::/64",
+                            "ipv6_cidr_block_association_id": "subnet-cidr-assoc-06e2c81682dc84264",
+                            "map_public_ip_on_launch": "false",
+                            "owner_id": "640664498685",
+                            "state": "available",
+                            "tags.%": "14",
+                            "tags.AdminContact": "kgjam",
+                            "tags.BillingCostCenter": "CC0697",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "BINONPROD-us-west-2b-Public",
+                            "tags.Product": "AWS Data Center Networks",
+                            "tags.ProductCategory": "Data Center Platforms \u0026 Services",
+                            "tags.ProductFamily": "Cloud Engineering",
+                            "tags.Repo": "https://github.com/ASU/aws-org-asu-accounts",
+                            "tags.TechContact": "kxglw",
+                            "tags.Type": "Public",
+                            "tags.kubernetes.io/cluster/caas": "shared",
+                            "tags.kubernetes.io/cluster/eks": "shared",
+                            "tags.kubernetes.io/role/elb": "1",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_subnet_ids.private": {
+                    "type": "aws_subnet_ids",
+                    "depends_on": [
+                        "data.aws_vpc.selected"
+                    ],
+                    "primary": {
+                        "id": "vpc-af5782c9",
+                        "attributes": {
+                            "id": "vpc-af5782c9",
+                            "ids.#": "2",
+                            "ids.1665337876": "subnet-89aa93c0",
+                            "ids.51846842": "subnet-20b75146",
+                            "tags.%": "1",
+                            "tags.Type": "Private",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_subnet_ids.public": {
+                    "type": "aws_subnet_ids",
+                    "depends_on": [
+                        "data.aws_vpc.selected"
+                    ],
+                    "primary": {
+                        "id": "vpc-af5782c9",
+                        "attributes": {
+                            "id": "vpc-af5782c9",
+                            "ids.#": "2",
+                            "ids.1659351236": "subnet-d1ac9598",
+                            "ids.317730024": "subnet-bdb452db",
+                            "tags.%": "1",
+                            "tags.Type": "Public",
+                            "vpc_id": "vpc-af5782c9"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_vpc.selected": {
+                    "type": "aws_vpc",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "vpc-af5782c9",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:us-west-2:640664498685:vpc/vpc-af5782c9",
+                            "cidr_block": "10.120.112.0/22",
+                            "cidr_block_associations.#": "1",
+                            "cidr_block_associations.0.association_id": "vpc-cidr-assoc-741b941c",
+                            "cidr_block_associations.0.cidr_block": "10.120.112.0/22",
+                            "cidr_block_associations.0.state": "associated",
+                            "default": "false",
+                            "dhcp_options_id": "dopt-092bb3516c9382771",
+                            "enable_dns_hostnames": "true",
+                            "enable_dns_support": "true",
+                            "id": "vpc-af5782c9",
+                            "instance_tenancy": "default",
+                            "ipv6_association_id": "vpc-cidr-assoc-0c0362c84392116b2",
+                            "ipv6_cidr_block": "2600:1f14:b3b:6800::/56",
+                            "main_route_table_id": "rtb-749cc712",
+                            "owner_id": "640664498685",
+                            "state": "available",
+                            "tags.%": "12",
+                            "tags.AdminContact": "kgjam",
+                            "tags.BillingCostCenter": "CC0697",
+                            "tags.BillingProgram": "PG06101",
+                            "tags.Lifecycle": "non-prod",
+                            "tags.Name": "BINONPROD-us-west-2",
+                            "tags.Product": "AWS Data Center Networks",
+                            "tags.ProductCategory": "Data Center Platforms \u0026 Services",
+                            "tags.ProductFamily": "Cloud Engineering",
+                            "tags.Repo": "https://github.com/ASU/aws-org-asu-accounts",
+                            "tags.TechContact": "kxglw",
+                            "tags.kubernetes.io/cluster/caas": "shared",
+                            "tags.kubernetes.io/cluster/eks": "shared"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                }
+            },
+            "depends_on": []
+        }
+    ]
+}
+
