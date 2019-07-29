@@ -1,3 +1,3 @@
-variable "iam-user" {}
-variable "current-account-id" {}
-variable "cli-s3-access-arn" {}
+variable "iam_user" {}
+variable "current_account_id" {}
+variable "cli_s3_access_arn" {}
