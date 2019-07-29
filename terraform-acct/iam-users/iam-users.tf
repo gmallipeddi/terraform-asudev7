@@ -41,4 +41,3 @@ resource "aws_iam_policy" "ldw_manage_accesskeys" {
 }
 EOF
 }
-
