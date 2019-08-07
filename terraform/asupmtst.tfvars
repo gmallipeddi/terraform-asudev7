@@ -52,7 +52,7 @@ pm_major_engine_version = "12.2"
 
 pm_auto_minor_version_upgrade = false
 
-pm_backup_retention_period = 35
+pm_backup_retention_period = 0
 
 pm_backup_window = "07:00-09:00"
 
