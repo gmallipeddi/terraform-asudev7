@@ -6,6 +6,7 @@ variable "pm_engine" {}
 variable "pm_storage_encrypted" {}
 variable "pm_copy_tags_to_snapshot" {}
 variable "pm_allocated_storage" {}
+variable "pm_max_allocated_storage" {}
 variable "pm_engine_version" {}
 variable "pm_instance_class" {}
 variable "pm_name" {}

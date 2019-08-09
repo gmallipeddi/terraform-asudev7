@@ -18,7 +18,7 @@ log_prefix = "rds/asupmtst"
 
 region = "us-west-2"
 
-pm_apply_immediately = false
+pm_apply_immediately = true
 
 pm_storage_type = "gp2"
 
@@ -31,6 +31,8 @@ pm_copy_tags_to_snapshot = true
 pm_identifier = "asupmtst"
 
 pm_allocated_storage = 9000
+
+pm_max_allocated_storage = 14000
 
 pm_engine_version = "12.2.0.1.ru-2019-01.rur-2019-01.r1"
 
