@@ -18,7 +18,7 @@ log_prefix = "rds/asupmtst"
 
 region = "us-west-2"
 
-pm_apply_immediately = true
+pm_apply_immediately = false
 
 pm_storage_type = "gp2"
 
