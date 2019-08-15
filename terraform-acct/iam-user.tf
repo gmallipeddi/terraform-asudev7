@@ -40,6 +40,27 @@ module "user-avichenk" {
   cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
 }
 
+module "user-dpadman5" {
+  source             = "./iam-users"
+  iam_user           = "dpadman5"
+  current_account_id = "${data.aws_caller_identity.current.account_id}"
+  cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
+}
+
+module "user-ckadira" {
+  source             = "./iam-users"
+  iam_user           = "ckadira"
+  current_account_id = "${data.aws_caller_identity.current.account_id}"
+  cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
+}
+
+module "user-adhavala" {
+  source             = "./iam-users"
+  iam_user           = "adhavala"
+  current_account_id = "${data.aws_caller_identity.current.account_id}"
+  cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
+}
+
 resource "aws_iam_policy" "dba_cli_s3_access" {
   name        = "LDWDBAS3access"
   description = "LDW DBA S3 bucket access for Oracle import"
