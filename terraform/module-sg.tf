@@ -63,6 +63,7 @@ resource "aws_security_group_rule" "oracle-in" {
     "10.16.3.0/24",       # law-db1.law.asu.edu
     "10.119.11.0/24",     # wpcsql02.wpcarey.ad.asu.edu
     "10.192.2.0/24",      # authdev.lib.asu.edu
+    "129.219.247.61/32",     # libfwcl.asu.edu
     "149.169.121.0/24",   # fultondevfw.fulton.ad.asu.edu
     "149.169.137.0/24",   # warehouse.asufoundation.org
     "10.120.16.0/23",    # ENTNONPROD Private VPC
