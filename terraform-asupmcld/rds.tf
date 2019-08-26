@@ -1,6 +1,7 @@
 resource "aws_db_instance" "pm_ldw_oracle" {
   identifier                   = "${var.pm_identifier}"
   allocated_storage            = "${var.pm_allocated_storage}"
+  max_allocated_storage        = "${var.pm_max_allocated_storage}"
   storage_type                 = "${var.pm_storage_type}"
   engine                       = "${var.pm_engine}"
   engine_version               = "${var.pm_engine_version}"
@@ -12,6 +13,7 @@ resource "aws_db_instance" "pm_ldw_oracle" {
   license_model                = "${var.pm_license_model}"
   vpc_security_group_ids       = ["${module.rds-sg.id}"]
   db_subnet_group_name         = "${aws_db_subnet_group.pm_subnet_group.id}"
+  availability_zone            = "${var.pm_availability_zone}"
   backup_retention_period      = "${var.pm_backup_retention_period}"
   backup_window                = "${var.pm_backup_window}"
   skip_final_snapshot          = "${var.pm_skip_final_snapshot}"
@@ -73,13 +75,22 @@ resource "aws_db_option_group" "pm_ldw_oracle" {
 
     option_settings {
       name  = "SQLNET.CRYPTO_CHECKSUM_TYPES_SERVER"
-      value = "SHA1"
+      value = "SHA256"
     }
   }
 
   option {
     option_name = "S3_INTEGRATION"
     version     = "1.0"
+  }
+
+  option {
+    option_name = "Timezone"
+
+    option_settings {
+      name  = "TIME_ZONE"
+      value = "America/Phoenix"
+    }
   }
 }
 
@@ -102,8 +113,62 @@ resource "aws_db_parameter_group" "pm_ldw_oracle_parameters" {
   }
 
   parameter {
+    name         = "optimizer_use_sql_plan_baselines"
+    value        = "FALSE"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
     name         = "audit_trail"
     value        = "db"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "recyclebin"
+    value        = "ON"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "db_flashback_retention_target"
+    value        = "2880"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "job_queue_processes"
+    value        = "100"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "open_cursors"
+    value        = "1000"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "open_links"
+    value        = "11"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "open_links_per_instance"
+    value        = "11"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "db_recovery_file_dest_size"
+    value        = "2000000000000"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "optimizer_adaptive_plans"
+    value        = "FALSE"
     apply_method = "pending-reboot"
   }
 }
