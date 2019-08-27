@@ -110,4 +110,63 @@ resource "aws_db_parameter_group" "pm_ldw_oracle_parameters" {
     value        = "EXTENDED"
     apply_method = "pending-reboot"
   }
+
+  parameter {
+    name         = "optimizer_use_sql_plan_baselines"
+    value        = "FALSE"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "audit_trail"
+    value        = "db"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "recyclebin"
+    value        = "ON"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "db_flashback_retention_target"
+    value        = "2880"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "job_queue_processes"
+    value        = "100"
+    apply_method = "pending-reboot"
+  }
+  parameter {
+    name         = "open_cursors"
+    value        = "1000"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "open_links"
+    value        = "11"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "open_links_per_instance"
+    value        = "11"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "db_recovery_file_dest_size"
+    value        = "2000000000000"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "optimizer_adaptive_plans"
+    value        = "FALSE"
+    apply_method = "pending-reboot"
+  }
 }
