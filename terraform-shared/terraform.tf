@@ -24,3 +24,5 @@ variable "dms_enabled" {
 }
 
 variable "dms_instance_class" {}
+
+variable "vpc_name" {}

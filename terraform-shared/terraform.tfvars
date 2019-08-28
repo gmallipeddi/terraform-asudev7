@@ -16,3 +16,5 @@ tags = {
 
 dms_enabled        = 1
 dms_instance_class = "dms.c4.xlarge"
+
+vpc_name = "BINONPROD-us-west-2"
