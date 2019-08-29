@@ -8,7 +8,7 @@ resource "aws_dms_endpoint" "asupmcld" {
   endpoint_type = "target"
   engine_name   = "oracle"
   port          = 1521
-  ssl_mode      = "verify-ca"
+  ssl_mode      = "none"
 
   server_name   = "asupmcld.cslew3xddqer.us-west-2.rds.amazonaws.com"
   database_name = "ASUPMCLD"
@@ -27,7 +27,7 @@ resource "aws_dms_endpoint" "asupmtst" {
   endpoint_type = "source"
   engine_name   = "oracle"
   port          = 3200
-  ssl_mode      = "verify-ca"
+  ssl_mode      = "none"
 
   database_name = "ASUPMTST"
   server_name   = "172.25.48.43"                              # dblx501-vip2.atsc.asu.edu
