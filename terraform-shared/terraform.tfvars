@@ -13,3 +13,8 @@ tags = {
   BillingProgram    = "PG06101"
   Repo              = "https://github.com/ASU/edw-oracle-data-warehouse"
 }
+
+dms_enabled        = 1
+dms_instance_class = "dms.c4.xlarge"
+
+vpc_name = "BINONPROD-us-west-2"
