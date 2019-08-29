@@ -18,11 +18,3 @@ provider "aws" {
 terraform {
   backend "s3" {}
 }
-
-variable "dms_enabled" {
-  default = 0
-}
-
-variable "dms_instance_class" {}
-
-variable "vpc_name" {}
