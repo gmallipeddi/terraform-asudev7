@@ -13,12 +13,12 @@ resource "aws_dms_endpoint" "asupmcld" {
   server_name   = "asupmcld.cslew3xddqer.us-west-2.rds.amazonaws.com"
   database_name = "ASUPMCLD"
   username      = "username"
-  password      = "${random_string.dms_temp_password.result}"
+  password      = random_string.dms_temp_password.result
 
-  tags = "${module.tags.tags}"
+  tags = module.tags.tags
 
   lifecycle {
-    ignore_changes = ["password"]
+    ignore_changes = [password]
   }
 }
 
@@ -30,13 +30,14 @@ resource "aws_dms_endpoint" "asupmtst" {
   ssl_mode      = "none"
 
   database_name = "ASUPMTST"
-  server_name   = "172.25.48.43"                              # dblx501-vip2.atsc.asu.edu
+  server_name   = "172.25.48.43" # dblx501-vip2.atsc.asu.edu
   username      = "sysadm"
-  password      = "${random_string.dms_temp_password.result}"
+  password      = random_string.dms_temp_password.result
 
-  tags = "${module.tags.tags}"
+  tags = module.tags.tags
 
   lifecycle {
-    ignore_changes = ["password"]
+    ignore_changes = [password]
   }
 }
+
