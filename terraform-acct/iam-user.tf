@@ -1,64 +1,64 @@
 module "user-rbulusu" {
   source             = "./iam-users"
   iam_user           = "rbulusu"
-  current_account_id = "${data.aws_caller_identity.current.account_id}"
-  cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
+  current_account_id = data.aws_caller_identity.current.account_id
+  cli_s3_access_arn  = aws_iam_policy.dba_cli_s3_access.arn
 }
 
 module "user-mrball2" {
   source             = "./iam-users"
   iam_user           = "mrball2"
-  current_account_id = "${data.aws_caller_identity.current.account_id}"
-  cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
+  current_account_id = data.aws_caller_identity.current.account_id
+  cli_s3_access_arn  = aws_iam_policy.dba_cli_s3_access.arn
 }
 
 module "user-ssbhati3" {
   source             = "./iam-users"
   iam_user           = "ssbhati3"
-  current_account_id = "${data.aws_caller_identity.current.account_id}"
-  cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
+  current_account_id = data.aws_caller_identity.current.account_id
+  cli_s3_access_arn  = aws_iam_policy.dba_cli_s3_access.arn
 }
 
 module "user-mwsmit19" {
   source             = "./iam-users"
   iam_user           = "mwsmit19"
-  current_account_id = "${data.aws_caller_identity.current.account_id}"
-  cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
+  current_account_id = data.aws_caller_identity.current.account_id
+  cli_s3_access_arn  = aws_iam_policy.dba_cli_s3_access.arn
 }
 
 module "user-schinthi" {
   source             = "./iam-users"
   iam_user           = "schinthi"
-  current_account_id = "${data.aws_caller_identity.current.account_id}"
-  cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
+  current_account_id = data.aws_caller_identity.current.account_id
+  cli_s3_access_arn  = aws_iam_policy.dba_cli_s3_access.arn
 }
 
 module "user-avichenk" {
   source             = "./iam-users"
   iam_user           = "avichenk"
-  current_account_id = "${data.aws_caller_identity.current.account_id}"
-  cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
+  current_account_id = data.aws_caller_identity.current.account_id
+  cli_s3_access_arn  = aws_iam_policy.dba_cli_s3_access.arn
 }
 
 module "user-dpadman5" {
   source             = "./iam-users"
   iam_user           = "dpadman5"
-  current_account_id = "${data.aws_caller_identity.current.account_id}"
-  cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
+  current_account_id = data.aws_caller_identity.current.account_id
+  cli_s3_access_arn  = aws_iam_policy.dba_cli_s3_access.arn
 }
 
 module "user-ckadira" {
   source             = "./iam-users"
   iam_user           = "ckadira"
-  current_account_id = "${data.aws_caller_identity.current.account_id}"
-  cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
+  current_account_id = data.aws_caller_identity.current.account_id
+  cli_s3_access_arn  = aws_iam_policy.dba_cli_s3_access.arn
 }
 
 module "user-adhavala" {
   source             = "./iam-users"
   iam_user           = "adhavala"
-  current_account_id = "${data.aws_caller_identity.current.account_id}"
-  cli_s3_access_arn  = "${aws_iam_policy.dba_cli_s3_access.arn}"
+  current_account_id = data.aws_caller_identity.current.account_id
+  cli_s3_access_arn  = aws_iam_policy.dba_cli_s3_access.arn
 }
 
 resource "aws_iam_policy" "dba_cli_s3_access" {
@@ -96,4 +96,6 @@ resource "aws_iam_policy" "dba_cli_s3_access" {
     ]
 }
 EOF
+
 }
+
