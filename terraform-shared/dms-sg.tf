@@ -1,9 +1,13 @@
 resource "aws_security_group" "dms-sg" {
   name        = "${module.vpc.name}-dms"
   description = "${module.vpc.name} DMS"
-  vpc_id      = "${module.vpc.id}"
-  tags        = "${merge(module.tags.tags, map("Name", "${module.vpc.name}-dms"))}"
-
+  vpc_id      = module.vpc.id
+  tags = merge(
+    module.tags.tags,
+    {
+      "Name" = "${module.vpc.name}-dms"
+    },
+  )
   # tags = merge(
   #   module.tags.tags,
   #   {
@@ -38,7 +42,7 @@ resource "aws_security_group_rule" "dms_oracle_sci_out" {
     "172.25.48.46/32", # dblx502-vip3
   ]
 
-  security_group_id = "${aws_security_group.dms-sg.id}"
+  security_group_id = aws_security_group.dms-sg.id
 }
 
 resource "aws_security_group_rule" "dms_oracle_private_out" {
@@ -48,9 +52,8 @@ resource "aws_security_group_rule" "dms_oracle_private_out" {
   to_port     = 3200
   protocol    = "tcp"
 
-  cidr_blocks = [
-    "${module.vpc.private_cidrs}",
-  ]
+  cidr_blocks = module.vpc.private_cidrs
 
-  security_group_id = "${aws_security_group.dms-sg.id}"
+  security_group_id = aws_security_group.dms-sg.id
 }
+

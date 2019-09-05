@@ -9,5 +9,11 @@ resource "aws_s3_bucket" "import_bucket" {
     }
   }
 
-  tags = "${merge(var.tags, map("Name", "oracle-data-warehouse-import"))}"
+  tags = merge(
+    var.tags,
+    {
+      "Name" = "oracle-data-warehouse-import"
+    },
+  )
 }
+
