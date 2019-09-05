@@ -1,15 +1,15 @@
 resource "aws_iam_user" "user" {
-  name = "${var.iam_user}"
+  name = var.iam_user
 }
 
 resource "aws_iam_user_policy_attachment" "import_bucket" {
-  user       = "${aws_iam_user.user.name}"
-  policy_arn = "${var.cli_s3_access_arn}"
+  user       = aws_iam_user.user.name
+  policy_arn = var.cli_s3_access_arn
 }
 
 resource "aws_iam_user_policy_attachment" "manage_accesskey" {
-  user       = "${aws_iam_user.user.name}"
-  policy_arn = "${aws_iam_policy.ldw_manage_accesskeys.arn}"
+  user       = aws_iam_user.user.name
+  policy_arn = aws_iam_policy.ldw_manage_accesskeys.arn
 }
 
 resource "aws_iam_policy" "ldw_manage_accesskeys" {
@@ -40,4 +40,6 @@ resource "aws_iam_policy" "ldw_manage_accesskeys" {
     ]
 }
 EOF
+
 }
+

@@ -22,10 +22,11 @@ resource "aws_iam_policy" "LDWRDSS3Integration" {
     ]
 }
 EOF
+
 }
 
 resource "aws_iam_role" "LDWRDSS3Integration" {
-  name        = "LDWRDSS3Integration"
+  name = "LDWRDSS3Integration"
   description = "Role forLDW RDS S3 bucket integration"
 
   assume_role_policy = <<EOF
@@ -42,9 +43,11 @@ resource "aws_iam_role" "LDWRDSS3Integration" {
      ]
 }
 EOF
+
 }
 
 resource "aws_iam_role_policy_attachment" "LDWRDSS3Integration" {
-  role       = "${aws_iam_role.LDWRDSS3Integration.name}"
-  policy_arn = "${aws_iam_policy.LDWRDSS3Integration.arn}"
+role       = aws_iam_role.LDWRDSS3Integration.name
+policy_arn = aws_iam_policy.LDWRDSS3Integration.arn
 }
+
