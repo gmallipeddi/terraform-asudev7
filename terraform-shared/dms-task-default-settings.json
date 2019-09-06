@@ -1,6 +1,6 @@
 {
     "TargetMetadata": {
-        "TargetSchema": "",
+        "TargetSchema": "username",
         "SupportLobs": true,
         "FullLobMode": false,
         "LobChunkSize": 0,
@@ -30,11 +30,11 @@
                 "Severity": "LOGGER_SEVERITY_DEFAULT"
             },
             {
-                "Id": "SOURCE_CAPTURE",
+                "Id": "TARGET_LOAD",
                 "Severity": "LOGGER_SEVERITY_DEFAULT"
             },
             {
-                "Id": "TARGET_LOAD",
+                "Id": "SOURCE_CAPTURE",
                 "Severity": "LOGGER_SEVERITY_DEFAULT"
             },
             {
