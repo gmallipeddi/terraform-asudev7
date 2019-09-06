@@ -60,10 +60,11 @@ resource "aws_security_group_rule" "oracle-in" {
     "10.106.3.0/24",      # tb-dbamp-dev.asurite.ad.asu.edu
     "10.106.10.0/24",     # chem-webtools-dev.asu.edu
     "129.219.31.26/32",   # law-db.law.asu.edu
-    "10.16.3.0/24",       # law-db1.law.asu.edu
+    "10.16.62.0/24",       # law-db1.law.asu.edu
     "10.119.11.0/24",     # wpcsql02.wpcarey.ad.asu.edu
     "10.192.2.0/24",      # authdev.lib.asu.edu
     "149.169.121.0/24",   # fultondevfw.fulton.ad.asu.edu
     "149.169.137.0/24",   # warehouse.asufoundation.org
   ] # oracle-in
 }
+
