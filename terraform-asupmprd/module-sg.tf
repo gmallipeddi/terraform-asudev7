@@ -34,12 +34,14 @@ resource "aws_security_group_rule" "oracle-in" {
 #    "10.106.250.0/24",    # Linux DEV/QA Web Servers
 #    "129.219.29.0/24",    # Linux DEV/QA Web Servers
     "10.106.225.0/24",    # ControlM Servers
-#    "10.120.128.0/23",    # BI Desktops
-#    "10.120.130.0/23",    # BI Desktops
-#    "10.120.160.0/21",    # BI Desktops
-#    "10.120.168.0/21",    # BI Desktops
+    "10.120.128.0/23",    # BI Desktops
+    "10.120.130.0/23",    # BI Desktops
+    "10.120.160.0/21",    # BI Desktops
+    "10.120.168.0/21",    # BI Desktops
     "10.120.114.0/24",    # Alteryx
     "10.120.115.0/24",    # DataStage nprod
+    "10.120.116.0/24",    # DataStage
+    "10.120.117.0/24",    # BIProd
     "10.220.132.203/32",  # Tableau (AWS UoA)
     "172.24.46.0/24",     # MSBI nprod (SCI)
     "172.25.46.0/24",     # Hyperion nprod (SCI)
@@ -60,7 +62,7 @@ resource "aws_security_group_rule" "oracle-in" {
     "10.106.3.0/24",      # tb-dbamp-dev.asurite.ad.asu.edu
     "10.106.10.0/24",     # chem-webtools-dev.asu.edu
     "129.219.31.26/32",   # law-db.law.asu.edu
-    "10.16.62.0/24",       # law-db1.law.asu.edu
+    "10.16.62.0/24",      # law-db1.law.asu.edu
     "10.119.11.0/24",     # wpcsql02.wpcarey.ad.asu.edu
     "10.192.2.0/24",      # authdev.lib.asu.edu
     "129.219.247.61/32",  # libfwcl.asu.edu
