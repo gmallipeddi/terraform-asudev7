@@ -1,16 +1,16 @@
 module "rds-sg" {
-  source = "git::ssh://git@github.com/ASU/dco-terraform.git//modules/security-group?ref=0.11"
+  source = "git::ssh://git@github.com/ASU/dco-terraform.git//modules/security-group?ref=0.12"
 
-  name        = "${var.pm_name}"
+  name        = var.pm_name
   description = "RDS ${var.pm_name} - Oracle"
 
-  vpc_name = "${var.vpc_name}"
+  vpc_name = var.vpc_name
 
-  tags = "${var.tags}"
+  tags = var.tags
 }
 
 resource "aws_security_group_rule" "oracle-in" {
-  security_group_id = "${module.rds-sg.id}"
+  security_group_id = module.rds-sg.id
   type              = "ingress"
   description       = "${var.pm_name} db"
   from_port         = 1521
@@ -60,11 +60,11 @@ resource "aws_security_group_rule" "oracle-in" {
     "10.106.3.0/24",      # tb-dbamp-dev.asurite.ad.asu.edu
     "10.106.10.0/24",     # chem-webtools-dev.asu.edu
     "129.219.31.26/32",   # law-db.law.asu.edu
-    "10.16.62.0/24",       # law-db1.law.asu.edu
+    "10.16.62.0/24",      # law-db1.law.asu.edu
     "10.119.11.0/24",     # wpcsql02.wpcarey.ad.asu.edu
     "10.192.2.0/24",      # authdev.lib.asu.edu
     "149.169.121.0/24",   # fultondevfw.fulton.ad.asu.edu
     "149.169.137.0/24",   # warehouse.asufoundation.org
-  ] # oracle-in
+  ]                       # oracle-in
 }
 

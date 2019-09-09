@@ -7,8 +7,8 @@ variable "vault_token" {
 }
 
 provider "vault" {
-  address = "${var.vault_addr}"
-  token   = "${var.vault_token}"
+  address = var.vault_addr
+  token   = var.vault_token
 }
 
 variable "vault_role_ttl" {
@@ -17,7 +17,7 @@ variable "vault_role_ttl" {
 }
 
 resource "vault_generic_secret" "rds_oracle_master" {
-  path = "${var.pm_vault_path}"
+  path = var.pm_vault_path
 
   data_json = <<EOT
 {
@@ -26,4 +26,6 @@ resource "vault_generic_secret" "rds_oracle_master" {
   "endpoint":   "${aws_db_instance.pm_ldw_oracle.endpoint}"
 }
 EOT
+
 }
+
