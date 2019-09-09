@@ -19,7 +19,7 @@ resource "aws_db_instance" "pm_ldw_oracle" {
   # If the expression in the following list itself returns a list, remove the
   # brackets to avoid interpretation as a list of lists. If the expression
   # returns a single list item then leave it as-is and remove this TODO comment.
-  vpc_security_group_ids     = module.rds-sg.id
+  vpc_security_group_ids     = [module.rds-sg.id]
   db_subnet_group_name       = aws_db_subnet_group.pm_subnet_group.id
   availability_zone          = var.pm_availability_zone
   backup_retention_period    = var.pm_backup_retention_period
