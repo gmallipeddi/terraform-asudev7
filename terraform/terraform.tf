@@ -1,20 +1,24 @@
-variable "region" {}
+variable "region" {
+}
 
 variable "profile" {
   default = "default"
 }
 
-variable "admin_role_arn" {}
+variable "admin_role_arn" {
+}
 
 provider "aws" {
-  region  = "${var.region}"
-  profile = "${var.profile}"
+  region  = var.region
+  profile = var.profile
 
   assume_role {
-    role_arn = "${var.admin_role_arn}"
+    role_arn = var.admin_role_arn
   }
 }
 
 terraform {
-  backend "s3" {}
+  backend "s3" {
+  }
 }
+
