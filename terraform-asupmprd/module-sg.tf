@@ -58,6 +58,16 @@ resource "aws_security_group_rule" "oracle-in" {
     "129.219.247.61/32",  # libfwcl.asu.edu
     "149.169.121.0/24",   # fultondevfw.fulton.ad.asu.edu
     "149.169.137.0/24",   # warehouse.asufoundation.org
+    "172.25.50.43/32",    # dblx501-vip2 SCI NAT IP
+    "172.25.50.44/32",    # dblx501-vip3 SCI NAT IP
+    "172.25.50.45/32",    # dblx502-vip2 SCI NAT IP
+    "172.25.50.46/32",    # dblx502-vip3 SCI NAT IP
+    "172.25.50.47/32",    # dblx505-vip2 SCI NAT IP
+    "172.25.50.48/32",    # dblx505-vip3 SCI NAT IP
+    "172.25.50.49/32",    # dblx506-vip2 SCI NAT IP
+    "172.25.50.50/32",    # dblx506-vip3 SCI NAT IP
+    "172.25.50.63/32",    # dblx513-vip2 SCI NAT IP
+    "172.25.50.64/32",    # dblx513-vip3 SCI NAT IP
   ]                       # oracle-in
   #    "10.120.16.0/23",     # ENTNONPROD Private VPC
   #    "10.120.18.0/23",     # ENTNONPROD Private VPC
