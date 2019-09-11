@@ -43,6 +43,7 @@ resource "aws_security_group_rule" "oracle-in" {
     "10.220.132.203/32",  # Tableau (AWS UoA)
     "172.24.46.0/24",     # MSBI nprod (SCI)
     "172.25.46.0/24",     # Hyperion nprod (SCI)
+    "172.25.50.0/24",     # SCI VPN NAT
     "129.219.103.86/32",  # ssis-n1.asurite.ad.asu.edu
     "129.219.176.25/32",  # dba-ts.asurite.ad.asu.edu
     "10.107.105.237/32",  # ssis-1.prod.ms.asu.edu
