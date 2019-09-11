@@ -58,16 +58,24 @@ resource "aws_security_group_rule" "oracle-in" {
     "129.219.247.61/32",  # libfwcl.asu.edu
     "149.169.121.0/24",   # fultondevfw.fulton.ad.asu.edu
     "149.169.137.0/24",   # warehouse.asufoundation.org
-    "172.25.50.43/32",    # dblx501-vip2 SCI NAT IP
-    "172.25.50.44/32",    # dblx501-vip3 SCI NAT IP
-    "172.25.50.45/32",    # dblx502-vip2 SCI NAT IP
-    "172.25.50.46/32",    # dblx502-vip3 SCI NAT IP
-    "172.25.50.47/32",    # dblx505-vip2 SCI NAT IP
-    "172.25.50.48/32",    # dblx505-vip3 SCI NAT IP
-    "172.25.50.49/32",    # dblx506-vip2 SCI NAT IP
-    "172.25.50.50/32",    # dblx506-vip3 SCI NAT IP
-    "172.25.50.63/32",    # dblx513-vip2 SCI NAT IP
-    "172.25.50.64/32",    # dblx513-vip3 SCI NAT IP
+    "172.25.50.65/32",    # asudbdlx01a SCI NAT IP
+    "172.25.50.66/32",    # asudbdlx01a-vip SCI NAT IP 
+    "172.25.50.67/32",    # asudbdlx01b SCI NAT IP
+    "172.25.50.68/32",    # asudbdlx01b-vip SCI NAT IP
+    "172.25.50.69/32",    # asudbdlx01c SCI NAT IP
+    "172.25.50.70/32",    # asudbdlx01c-vip SCI NAT IP
+    "172.25.50.71/32",    # asudbdlx01d SCI NAT IP
+    "172.25.50.72/32",    # asudbdlx01d-vip SCI NAT IP
+    "172.25.50.73/32",    # asudbplx01a SCI NAT IP
+    "172.25.50.74/32",    # asudbplx01a-vip SCI NAT IP
+    "172.25.50.75/32",    # asudbplx01b SCI NAT IP
+    "172.25.50.76/32",    # asudbplx01b-vip SCI NAT IP
+    "172.25.50.77/32",    # asudbplx01c SCI NAT IP
+    "172.25.50.78/32",    # asudbplx01c-vip NAT IP
+    "172.25.50.79/32",    # asudbplx01d SCI NAT IP
+    "172.25.50.80/32",    # asudbplx01d-vip SCI NAT IP
+    "172.25.50.81/32",    # asudbplx01e SCI NAT IP
+    "172.25.50.82/32",    # asudbplx01e-vip SCI NAT IP
   ]                       # oracle-in
   #    "10.120.16.0/23",     # ENTNONPROD Private VPC
   #    "10.120.18.0/23",     # ENTNONPROD Private VPC
