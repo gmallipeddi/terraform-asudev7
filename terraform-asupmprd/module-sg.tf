@@ -76,6 +76,7 @@ resource "aws_security_group_rule" "oracle-in" {
     "172.25.50.80/32",    # asudbplx01d-vip SCI NAT IP
     "172.25.50.81/32",    # asudbplx01e SCI NAT IP
     "172.25.50.82/32",    # asudbplx01e-vip SCI NAT IP
+    "172.25.50.85/32",    # asudbplx01b SCI NAT IP
   ]                       # oracle-in
   #    "10.120.16.0/23",     # ENTNONPROD Private VPC
   #    "10.120.18.0/23",     # ENTNONPROD Private VPC
