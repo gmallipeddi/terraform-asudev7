@@ -236,6 +236,68 @@ pipeline {
         }
       }
     }
+    stage('Validate asupmsup') {
+      agent {
+        docker {
+          reuseNode true
+          image 'bootswithdefer/terragrunt:0.12'
+          args '-e TF_IN_AUTOMATION=true'
+        }
+      }
+      steps {
+        terraformInit('terraform-asupmsup')
+      }
+    }
+    stage('Plan asupmsup') {
+      agent {
+        docker {
+          reuseNode true
+          image 'bootswithdefer/terragrunt:0.12'
+          args '-e TF_IN_AUTOMATION=true'
+        }
+      }
+      steps {
+        script {
+          def vault_addr = 'https://ops-vault-prod.opsprod.asu.edu'
+          def vault_token = vaultLogin(vault_addr, 'ops-vault-jenkins')
+          statusCode = terraformPlan('terraform-asupmsup', 'asupmsup', "-var vault_addr=${vault_addr} -var vault_token=${vault_token}")
+        }
+      }
+    }
+    stage('Gate for changes asupmsup') {
+      when {
+        beforeAgent true
+        branch 'master'
+        expression {
+          statusCode == 2
+        }
+      }
+      parallel {
+        stage('Apply asupmsup') {
+          agent {
+            docker {
+              reuseNode true
+              image 'bootswithdefer/terragrunt:0.12'
+              args '-e TF_IN_AUTOMATION=true'
+            }
+          }
+          options {
+            timeout(time: 60, unit: 'MINUTES')
+          }
+          input {
+            message "Should we continue?"
+            ok "Yes, we should."
+          }
+          steps {
+            script {
+              def vault_addr = 'https://ops-vault-prod.opsprod.asu.edu'
+              def vault_token = vaultLogin(vault_addr, 'ops-vault-jenkins')
+              terraformApply('terraform-asupmsup', 'asupmsup', "-var vault_addr=${vault_addr} -var vault_token=${vault_token}")
+            }
+          }
+        }
+      }
+    }
     stage('Validate asupmtst') {
       agent {
         docker {
