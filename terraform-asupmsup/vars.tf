@@ -37,6 +37,9 @@ variable "pm_username" {
 variable "pm_identifier" {
 }
 
+variable "pm_snapshot_identifier" {
+}
+
 variable "pm_license_model" {
 }
 
