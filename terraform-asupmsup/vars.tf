@@ -7,6 +7,9 @@ variable "log_prefix" {
 variable "pm_storage_type" {
 }
 
+variable "pm_iops" {
+}
+
 variable "pm_engine" {
 }
 

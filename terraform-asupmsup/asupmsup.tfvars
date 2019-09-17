@@ -20,7 +20,9 @@ region = "us-west-2"
 
 pm_apply_immediately = false
 
-pm_storage_type = "gp2"
+pm_storage_type = "io1"
+
+pm_iops = 17500
 
 pm_engine = "oracle-ee"
 

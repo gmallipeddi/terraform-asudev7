@@ -1,9 +1,10 @@
 resource "aws_db_instance" "pm_ldw_oracle" {
   identifier                 = var.pm_identifier
   snapshot_identifier        = var.pm_snapshot_identifier
-  allocated_storage          = var.pm_allocated_storage
+  # allocated_storage          = var.pm_allocated_storage
   max_allocated_storage      = var.pm_max_allocated_storage
   storage_type               = var.pm_storage_type
+  iops                       = var.pm_iops
   engine                     = var.pm_engine
   engine_version             = var.pm_engine_version
   instance_class             = var.pm_instance_class
