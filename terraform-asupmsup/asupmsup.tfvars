@@ -66,7 +66,7 @@ pm_maintenance_window = "Fri:12:00-Fri:12:30"
 
 pm_skip_final_snapshot = true
 
-pm_parameter_group_family = "oracle-se2-12.2"
+pm_parameter_group_family = "oracle-ee-12.2"
 
 pm_snapshot_arn = "arn:aws:rds:us-west-2:640664498685:snapshot:asupmsup*"
 
