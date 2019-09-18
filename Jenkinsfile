@@ -269,7 +269,7 @@ pipeline {
         beforeAgent true
         branch 'master'
         expression {
-          statusCode == 2
+          statusCode == 3
         }
       }
       parallel {
