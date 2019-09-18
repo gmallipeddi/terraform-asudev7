@@ -1,5 +1,6 @@
 #!groovy
 def statusCode
+def performASUPMSUPapplyStage = 'false'
 pipeline {
   agent {
     label 'ec2-docker'
@@ -269,7 +270,10 @@ pipeline {
         beforeAgent true
         branch 'master'
         expression {
-          statusCode == 3
+          statusCode == 2
+        }
+        expression {
+          performASUPMSUPapplyStage == "true"
         }
       }
       parallel {
