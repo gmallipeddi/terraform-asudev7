@@ -1,6 +1,6 @@
 #!groovy
 def statusCode
-def performASUPMSUPapplyStage = 'false'
+def performASUPMSUPapplyStage = 'true'
 pipeline {
   agent {
     label 'ec2-docker'
