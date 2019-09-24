@@ -46,9 +46,7 @@ resource "aws_security_group_rule" "oracle-in" {
     "172.25.50.0/24",     # SCI VPN NAT
     "129.219.103.86/32",  # ssis-n1.asurite.ad.asu.edu
     "129.219.176.25/32",  # dba-ts.asurite.ad.asu.edu
-    "10.107.105.237/32",  # ssis-1.prod.ms.asu.edu
-    "10.107.105.156/32",  # uto-dba-ts.prod.ms.asu.edu
-    "10.107.105.171/32",  # uto-dba-ts2.prod.ms.asu.edu
+    "10.107.104.0/22",    # Illumio Windows Prod
     "10.120.110.100/32",  # ssis-2.prod.ms.asu.edu
     "129.219.23.0/24",    # biomssql.asurite.ad.asu.edu
     "129.219.73.0/24",    # hida-lw04.hida.asu.edu
