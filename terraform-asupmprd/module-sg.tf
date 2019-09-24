@@ -59,24 +59,17 @@ resource "aws_security_group_rule" "oracle-in" {
     "149.169.121.0/24",   # fultondevfw.fulton.ad.asu.edu
     "149.169.137.0/24",   # warehouse.asufoundation.org
     "172.25.50.65/32",    # asudbdlx01a SCI NAT IP
-    "172.25.50.66/32",    # asudbdlx01a-vip SCI NAT IP 
     "172.25.50.67/32",    # asudbdlx01b SCI NAT IP
-    "172.25.50.68/32",    # asudbdlx01b-vip SCI NAT IP
     "172.25.50.69/32",    # asudbdlx01c SCI NAT IP
-    "172.25.50.70/32",    # asudbdlx01c-vip SCI NAT IP
     "172.25.50.71/32",    # asudbdlx01d SCI NAT IP
-    "172.25.50.72/32",    # asudbdlx01d-vip SCI NAT IP
     "172.25.50.73/32",    # asudbplx01a SCI NAT IP
-    "172.25.50.74/32",    # asudbplx01a-vip SCI NAT IP
     "172.25.50.75/32",    # asudbplx01b SCI NAT IP
-    "172.25.50.76/32",    # asudbplx01b-vip SCI NAT IP
     "172.25.50.77/32",    # asudbplx01c SCI NAT IP
-    "172.25.50.78/32",    # asudbplx01c-vip NAT IP
     "172.25.50.79/32",    # asudbplx01d SCI NAT IP
-    "172.25.50.80/32",    # asudbplx01d-vip SCI NAT IP
     "172.25.50.81/32",    # asudbplx01e SCI NAT IP
-    "172.25.50.82/32",    # asudbplx01e-vip SCI NAT IP
     "172.25.50.85/32",    # asudbplx01b SCI NAT IP
+    "10.107.43.0/24",     # bts APP/WEB Servers
+    "10.106.207.6/32",    # doc-gradapp1
   ]                       # oracle-in
   #    "10.120.16.0/23",     # ENTNONPROD Private VPC
   #    "10.120.18.0/23",     # ENTNONPROD Private VPC
