@@ -72,6 +72,7 @@ resource "aws_security_group_rule" "oracle-in" {
     "10.120.20.0/23",     # ENTNONPROD Private VPC
     "10.120.109.0/24",    # ENTPROD Illumio - ssis-2
     "10.120.110.0/24",    # ENTPROD Illumio - ssis-2
+    "10.120.66.0/24",     # ODSNONPROD - DMS
   ]                       # oracle-in
 }
 
