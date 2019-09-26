@@ -68,7 +68,6 @@ resource "aws_security_group_rule" "oracle-in" {
     "10.120.16.0/23",     # ENTNONPROD Private VPC
     "10.120.18.0/23",     # ENTNONPROD Private VPC
     "10.120.20.0/23",     # ENTNONPROD Private VPC
-    "172.25.50.0/24",     # SCI VPN NAT Subnet
   ]                       # oracle-in
 }
 
