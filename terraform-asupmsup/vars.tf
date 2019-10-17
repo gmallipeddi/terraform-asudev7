@@ -88,11 +88,3 @@ variable "pm_vault_path" {
 variable "pm_apply_immediately" {
   default = false
 }
-
-variable "vault_addr" {
-  description = "URL of Vault Server"
-}
-
-variable "vault_token" {
-  description = "Vault Token"
-}
