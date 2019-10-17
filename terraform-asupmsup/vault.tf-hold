@@ -1,10 +1,10 @@
-variable "vault_addr" {
-  description = "URL of Vault Server"
-}
+#variable "vault_addr" {
+#  description = "URL of Vault Server"
+#}
 
-variable "vault_token" {
-  description = "Vault Token"
-}
+#variable "vault_token" {
+#  description = "Vault Token"
+#}
 
 provider "vault" {
   address = var.vault_addr
