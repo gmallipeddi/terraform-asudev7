@@ -258,10 +258,21 @@ pipeline {
         }
       }
       steps {
-        script {
-          def vault_addr = 'https://ops-vault-prod.opsprod.asu.edu'
-          def vault_token = vaultLogin(vault_addr, 'ops-vault-jenkins')
-          statusCode = terraformPlan('terraform-asupmsup', 'asupmsup', "-var vault_addr=${vault_addr} -var vault_token=${vault_token}")
+        ansiColor('xterm') {
+          script {
+            def vault_addr = 'https://ops-vault-prod.opsprod.asu.edu'
+            def vault_token = vaultLogin(vault_addr, 'ops-vault-jenkins')
+            def subdir = 'terraform-asupmsup'
+            def workspace = 'asupmsup'
+            def extra_args = "-destroy -var vault_addr=${vault_addr} -var vault_token=${vault_token}"
+            sh "cd ${subdir} && (terraform workspace select ${workspace} || terraform workspace new ${workspace})"
+            echo "Executing (with extra args redacted): terraform plan -var-file=${workspace}.tfvars -detailed-exitcode -no-color -input=false"
+            statusCode = sh(
+                returnStatus: true,
+                script: "cd ${subdir} && set +x -u -o pipefail && terraform plan -var-file=${workspace}.tfvars ${extra_args} -detailed-exitcode -no-color -input=false 2>&1 | tee plan.out")
+            sh "grep -v Refreshing ${subdir}/plan.out > ${subdir}/plan.out.clean"
+            planOutput = readFile "${subdir}/plan.out.clean"
+          }
         }
       }
     }
