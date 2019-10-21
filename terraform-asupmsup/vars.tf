@@ -88,4 +88,3 @@ variable "pm_vault_path" {
 variable "pm_apply_immediately" {
   default = false
 }
-
