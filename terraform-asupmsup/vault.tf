@@ -23,7 +23,7 @@ resource "vault_generic_secret" "rds_oracle_master" {
 {
   "username":   "${var.pm_username}",
   "password":   "${random_string.pm_master_password.result}",
-  "endpoint":   "${aws_db_instance.pm_ldw_oracle.endpoint}"
+  "endpoint":   "asupmsup.cslew3xddqer.us-west-2.rds.amazonaws.com:1521"
 }
 EOT
 
