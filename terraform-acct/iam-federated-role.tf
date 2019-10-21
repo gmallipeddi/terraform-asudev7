@@ -24,3 +24,7 @@ EOF
 
 }
 
+resource "aws_iam_role_policy_attachment" "rds_dba_policy_attach" {
+  role       = "RDSReadOnlyWithSnapshots"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonRDSReadOnlyAccess"
+}
