@@ -304,10 +304,17 @@ pipeline {
             ok "Yes, we should."
           }
           steps {
-            script {
-              def vault_addr = 'https://ops-vault-prod.opsprod.asu.edu'
-              def vault_token = vaultLogin(vault_addr, 'ops-vault-jenkins')
-              terraformApply('terraform-asupmsup', 'asupmsup', "-var vault_addr=${vault_addr} -var vault_token=${vault_token}")
+            ansiColor('xterm') {
+              script {
+                def vault_addr = 'https://ops-vault-prod.opsprod.asu.edu'
+                def vault_token = vaultLogin(vault_addr, 'ops-vault-jenkins')
+                def subdir = 'terraform-asupmsup'
+                def workspace = 'asupmsup'
+                def extra_args = "-var vault_addr=${vault_addr} -var vault_token=${vault_token}"
+                sh "cd ${subdir} && (terraform workspace select ${workspace} || terraform workspace new ${workspace})"
+                echo "Executing (with extra args redacted): terraform destroy -var-file=${workspace}.tfvars -auto-approve"
+                sh "cd ${subdir} && set +x -u -o pipefail && terraform destroy -var-file=${workspace}.tfvars ${extra_args} -auto-approve"
+              }
             }
           }
         }
