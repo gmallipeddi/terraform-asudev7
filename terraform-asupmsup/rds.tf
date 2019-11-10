@@ -160,7 +160,7 @@ resource "aws_db_parameter_group" "pm_ldw_oracle_parameters" {
   }
   parameter {
     name         = "open_cursors"
-    value        = "1000"
+    value        = "1100"
     apply_method = "pending-reboot"
   }
 
